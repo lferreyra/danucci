@@ -5,8 +5,8 @@ import logo from "../Img/logoDANUCCI.png";
 const Navbar = () => {
   return (
     <div>
-        <div className="container">
-            <ul className="nav d-flex align-items-center">
+        <div className="navbar">
+            <ul className="nav d-flex align-items-center font-weight-light text-secondary">
                 <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="./"><img src={logo} width="48" alt="Logo" /></a> 
                 </li>
@@ -22,9 +22,10 @@ const Navbar = () => {
                 <li className="nav-item">
                     <a className="nav-link link_header" href="">Contacto</a>
                 </li>
-                
+              
                 <CartWidget />
-                              
+                <span className="font-weight-bold">8</span>
+                       
             </ul>
         </div>
     </div>

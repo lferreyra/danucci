@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, onAdd } from 'react';
 
 const Contador = ({ stock }) => {
@@ -8,15 +9,17 @@ const Contador = ({ stock }) => {
         }
     };
     const restar = () => {
-        if (cantidad < stock) {
+        if (cantidad > 1) {
             setCantidad(cantidad - 1);
         }
     };
 
 
     const reset = () => {
-        setCantidad(0);
+        setCantidad(1);
     };
+
+    const agregar = () => onAdd(cantidad);
 
     return (
     <div 
@@ -29,16 +32,16 @@ const Contador = ({ stock }) => {
         }}
     >
         
-        <br />
-        <p>{cantidad}</p>
         <button className="btn btn-dark" disabled={cantidad === stock} onClick={sumar}>
+         
             +
         </button>  
+        <p>{cantidad}</p>
         <button className="btn btn-dark" disabled={cantidad === stock} onClick={restar}>
             -
         </button>
-        <button className="btn btn-dark" onClick={reset}> Volver a 0</button>
-        <button className="btn btn-dark" onClick={onAdd}> Comprar</button>
+        <button className="btn btn-dark" onClick={reset}> Volver a 1</button>
+        <button className="btn btn-primary"onClick={agregar}>Comprar</button>
         
         </div>
   );

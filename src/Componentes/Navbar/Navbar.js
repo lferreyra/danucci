@@ -11,16 +11,16 @@ const Navbar = () => {
                     <a className="nav-link active" aria-current="page" href="./"><img src={logo} width="48" alt="Logo" /></a> 
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link link_header" href="">Pedí tu Danucci</a>
+                    <a className="nav-link link_header" href="/category/yogurts">Yogurts</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link link_header" href="">Catalogo</a>
+                    <a className="nav-link link_header" href="/category/Veganos">Veganos</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link link_header" href="">Promos</a>
+                    <a className="nav-link link_header" href="/category/Jellys">Jellys</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link link_header" href="">Contacto</a>
+                    <a className="nav-link link_header" href="/contacto">Contacto</a>
                 </li>
               
                 <CartWidget />

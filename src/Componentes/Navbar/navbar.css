@@ -1,8 +1,14 @@
-.contenedor_menu {
+.NavBar {
     display: flex;
     flex-direction: row;
     background-color: white;
+    
     }
+navbar-brand {
+    width: 30px;
+    height: 30px;
+}
+
 hr {
     border:none;
     height: 20px;
@@ -13,4 +19,22 @@ hr {
     box-shadow: 0 10px 10px -10px #333;
     margin: -50px auto 10px; 
 }
+.link {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin-right: 1rem;
+    
 
+}
+.active {
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin-right: 1rem;
+    padding-left: 2rem;
+}

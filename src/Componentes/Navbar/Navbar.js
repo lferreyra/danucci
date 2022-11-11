@@ -1,35 +1,33 @@
 import React from 'react'
-import CartWidget from '../Cart/CartWidget';
-import logo from "../Img/logoDANUCCI.png";
+import { NavLink } from 'react-router-dom';
+
+
 
 const Navbar = () => {
   return (
-    <div>
-        <div className="navbar">
-            <ul className="nav d-flex align-items-center font-weight-light text-secondary">
-                <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="./"><img src={logo} width="48" alt="Logo" /></a> 
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link link_header" href="/category/yogurts">Yogurts</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link link_header" href="/category/Veganos">Veganos</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link link_header" href="/category/Jellys">Jellys</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link link_header" href="/contacto">Contacto</a>
-                </li>
+   
+        <nav className="nav link_header d-flex align-items-center font-weight-light text-secondary">
+            
+            <NavLink className="navbar-brand" to="/">Danucci</NavLink>
+                   
+               <NavLink className="link" classNameActive="active" to={"/category/Yogures"}>Yogures</NavLink>
+                
               
-                <CartWidget />
-                <span className="font-weight-bold">8</span>
-                       
-            </ul>
-        </div>
-    </div>
-  );
+                    <NavLink className="link" classNameActive="active" to={"/category/Vegano"}>Veganos</NavLink>
+             
+                
+                    <NavLink className="link" classNameActive="active" to={"/category/Jelly"}>Jellys</NavLink>
+              
+                
+                    <NavLink className="link" classNameActive="active" to={"/contacto"}>Contacto</NavLink>
+               
+              
+                <NavLink classNameActive="active" to={"/cart"}> 
+             
+                </NavLink>
+                                      
+            </nav>
+    );
 }
 
 export default Navbar

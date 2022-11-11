@@ -12,17 +12,17 @@ const ItemListContainer = () => {
             useEffect(() => {                
                 getProducts(categoryName)
                         .then((res) => {
-                        setItems(res);
+                            setItems(res);
                         })
                         .catch((error) => {
-                        console.log=(error);
+                            console.log=(error);
                         });
-                        }, [categoryName]);
+                }, [categoryName]);
                             
-                        return (
-                        <div className="container">
-                        <ItemList items={items} />
-                        </div>
+                return (
+                <div className="container mx-auto mt-4">
+                    <ItemList items={items} />
+               </div>
             );
         };
         

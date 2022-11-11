@@ -3,11 +3,17 @@ import Item from './Item';
 
 const ItemList = ({ items }) => {
     return (
-        <div className="row py-3 col-md-3 ">
-            {items.map((Products) => {
-                return <Item producto={Products} key={Products.id} />;
+    <div className='container mx-auto mt-3'>
+        <div className='row'>
+           <div className="col-md-3">
+             <div className='card style="width: 18rem'>
+            {items.map((products) => {
+                return <Item producto={products} key={products.id} />;
             })}
         </div>
+      </div>
+    </div>
+    </div>  
     );
 };
 

@@ -14,6 +14,7 @@ const itemDetail = ( {item} ) => {
               <span>{item.nombre}</span> 
               <p>{item.descripcion}</p>
               <h3>${item.precio}</h3>
+              <h6>Stock: {item.stock}</h6>
               <Contador stock={item.stock} onAdd={onAdd} />
          </article>
     </div>

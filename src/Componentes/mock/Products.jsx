@@ -9,7 +9,7 @@ export const products = [
         imagen: "https://i.postimg.cc/2SS3m799/10.png",
         category:'Colchón de frutas',  
         precio: 350, 
-        stock: 8
+        stock: 8,
     },
     {
         id: 2, 
@@ -19,7 +19,7 @@ export const products = [
         imagen: "https://i.postimg.cc/R03FJVBc/11.png",
         category:'Jelly',  
         precio: 350, 
-        stock: 5
+        stock: 5,
     },
     {
         id: 3, 
@@ -29,7 +29,7 @@ export const products = [
         imagen:"https://i.postimg.cc/650TDmcG/9.png",
         category:'Yogures',  
         precio: 350, 
-        stock: 10
+        stock: 7,
     },
     {
         id: 4, 
@@ -39,7 +39,7 @@ export const products = [
         imagen: "https://i.postimg.cc/sxP1f6Rq/8.png",
         category:'Yogures', 
         precio:350, 
-        stock:6
+        stock:6,
     },
     {
         id: 5, 
@@ -49,7 +49,7 @@ export const products = [
         imagen:"https://i.postimg.cc/ZqqN7ShR/7.png",
         category:'Vegano', 
         precio: 350, 
-        stock: 9 
+        stock: 9, 
     },
 
 ];

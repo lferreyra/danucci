@@ -71,6 +71,6 @@ export const getProduct = (idProd) => {
         const product = products.find((prod) => prod.id === +idProd);
         setTimeout(() => {
             res(product);
-        }, 2000);
+        }, 500);
     });
 };

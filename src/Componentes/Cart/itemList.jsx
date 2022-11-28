@@ -6,7 +6,7 @@ const ItemList = ({ items }) => {
     <div className='container mx-auto mt-3'>
         <div className='row'>
            <div className="col-md-3">
-             <div className='card style="width: 18rem'>
+             <div className='card style="width: 1rem'>
             {items.map((products) => {
                 return <Item producto={products} key={products.id} />;
             })}

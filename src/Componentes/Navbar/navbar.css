@@ -2,8 +2,11 @@
     display: flex;
     flex-direction: row;
     background-color: white;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+}
     
-    }
 navbar-brand {
     width: 30px;
     height: 30px;

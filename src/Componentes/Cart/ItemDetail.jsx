@@ -4,38 +4,36 @@ import Contador from "../Contador";
 import { Link } from 'react-router-dom';
 
 
-const itemDetail = ({ item }) => {
-  //const [cant, setCant] = useState(0);
-  const [show, setShow] = useState(true);
+const ItemDetail = ({ item }) => {
+ 
+    const [show, setShow] = useState(true);
 
-  const { addToCart, cantidadDeProducto } = useContext(CartContext);
+    const { addToCart, cantidadDeProducto } = useContext(CartContext);
 
 
-  const onAdd = (qty) => {
-        setShow(false);
-        addToCart(item, qty);
-  };
+    const onAdd = (qty) => {
+          setShow(false);
+          addToCart(item, qty);
+    };
   
-  const cantidad = cantidadDeProducto(item.id);
+    const cantidad = cantidadDeProducto(item.nombre);
 
   
-  return (
+    return (
       <div className="detail">
-          <img src={item.imagen} alt={item.nombre} />
+          <img class="img-thumbnail" src={item.imagen}  alt={item.id} />
             <article>
-              {show ? ( 
-                    <h2>{item.nombre}</h2>
-              ) : (
-                    <h2>{item.nombre}</h2> 
-              )}
+                <h2>{item.nombre}</h2>             
                 <p>{item.descripcion}</p>
                 <h3>${item.precio}</h3>
                 <h6>Stock: {item.stock}</h6>
+                <p>Producto ID: {item.id}</p>
                 {show ? (
                     <Contador 
                     stock={item.stock} 
                     onAdd={onAdd} 
-                    initial={cantidad} />
+                    initial={cantidad} 
+                />
                 ) : (
                     <Link to="/cart">Ir al carrito</Link>
                 )}  
@@ -46,4 +44,4 @@ const itemDetail = ({ item }) => {
 };
 
 
-export default itemDetail;
+export default ItemDetail;

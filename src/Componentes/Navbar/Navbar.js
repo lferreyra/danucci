@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import CartWidget from '../../Cart/CartWidget';
+import CartWidget from '../../CartWidgjet/CartWidget';
+
 
 
 
@@ -8,7 +9,7 @@ const Navbar = () => {
   
   return (
    
-        <nav className="nav link_header d-flex align-items-center font-weight-light text-secondary">
+        <nav className="d-flex align-items-center font-weight-light text-secondary">
             
             <NavLink className="navbar-brand" to="/">Danucci</NavLink>
                    
@@ -23,9 +24,9 @@ const Navbar = () => {
                 
                     <NavLink className="links" to={"/contacto"}>Contacto</NavLink>
                
-                    <NavLink className="links"  to={"/cart"}>Cart</NavLink>
+                    <NavLink className="links"  to={"/cart"}> <CartWidget /></NavLink>
 
-                    <CartWidget />
+                   
                                       
             </nav>
     );

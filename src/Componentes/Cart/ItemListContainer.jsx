@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getProducts } from '../mock/Products';
-import ItemList from './itemList';
+import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
 import BarLoader from "react-spinners/BarLoader";
 import { collection, getDocs, query, where } from 'firebase/firestore' 
@@ -17,13 +16,13 @@ const ItemListContainer = () => {
     useEffect(() => {  
         const collectionProd = collection(db, 'productos');
 
-        const ref = categoryName
-            ? query (collectionProd, where('category', '==', categoryName))
-            : collectionProd;
+      const ref = categoryName
+          ? query (collectionProd, where('category', '==', categoryName))
+          : collectionProd;
 
   
         
-    getDocs(collectionProd)
+    getDocs(ref)
         .then((res)=>{
              const products = res.docs.map((prod) => {
                 return {
@@ -43,7 +42,7 @@ const ItemListContainer = () => {
         });               
                                     
        return () => setLoading(true);
-        }, [categoryName]);
+    }, [categoryName]);
 
  
     if (loading) {
@@ -53,7 +52,7 @@ const ItemListContainer = () => {
         </div>
        
    );
-};
+}
                             
       return (
           <div className="container">

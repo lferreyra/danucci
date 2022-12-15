@@ -1,10 +1,9 @@
 import React, { useEffect, useState }  from 'react';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
-//import { getProduct } from '../mock/Products';
 import { collection, doc, getDoc } from 'firebase/firestore';
 import BarLoader  from "react-spinners/BarLoader";
-import { collectionProd, db } from '../../services/firebaseConfig';
+import { db } from '../../services/firebaseConfig';
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
@@ -17,20 +16,20 @@ const ItemDetailContainer = () => {
         const ref = doc(collectionProd, idProd);
        
         getDoc(ref) 
-            .then((res)=>{
+            .then((res) => {
                 setItem({
                     id: res.id,
                     ...res.data(),
             });
 
         })
-        .catch((error)=>{
+        .catch((error) => {
             console.log(error)
             
         })
-        .finally((res)=>{
-            setLoading(false)
-        })
+        .finally(() => {
+            setLoading(false);
+        });
 
     }, [idProd]);
 
@@ -44,7 +43,7 @@ const ItemDetailContainer = () => {
 };
 
     return (
-        <div className='detail-container'>
+        <div className="detail-container">
             <ItemDetail item={item} />
             
         </div>

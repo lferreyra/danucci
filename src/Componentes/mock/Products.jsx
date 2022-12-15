@@ -16,7 +16,7 @@ export const products = [
         nombre:"Jelly", 
         descripcion: "Trozos de pera, durazno y ananá, con una deliciosa gelatina de cereza y una suave crema descremada para tu deleite.", 
         peso: "350g.", 
-        imagen: "https://i.postimg.cc/R03FJVBc/11.png",
+        imagen:"https://i.postimg.cc/R03FJVBc/11.png",
         category:'Jelly',  
         precio: 350, 
         stock: 5,

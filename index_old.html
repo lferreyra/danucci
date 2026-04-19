@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANUCCI | El Sistema Probado para Emprender con Postres Fríos al Por Mayor</title>
+    <meta name="description" content="Aprende paso a paso cómo montar un negocio de postres fríos al por mayor con 10 años de experiencia real. 8 recetas, plantillas de costos y el sistema completo.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-cream: #FFF9F2;
+            --bg-white: #FFFFFF;
+            --bg-warm: #FFF0E3;
+            --bg-section: #FDF6EF;
+            --bg-dark: #1A1A1A;
+
+            --text-dark: #1A1A1A;
+            --text-body: #4A4A4A;
+            --text-muted: #8A8A8A;
+
+            --accent: #E8854A;
+            --accent-dark: #D4723A;
+            --gold: #C8A96E;
+
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+            --radius: 24px;
+            --shadow-soft: 0 15px 40px rgba(0,0,0,0.06);
+            --shadow-card: 0 8px 30px rgba(0,0,0,0.04);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        .section-pad { padding: 120px 0; }
+
+        .kicker {
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--text-dark);
+        }
+        h2 i, h1 i { font-style: italic; color: var(--accent); }
+
+        /* === ANIMATIONS === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s var(--ease-lux), transform 0.9s var(--ease-lux);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-d1 { transition-delay: 0.1s; }
+        .reveal-d2 { transition-delay: 0.2s; }
+        .reveal-d3 { transition-delay: 0.3s; }
+        .reveal-d4 { transition-delay: 0.4s; }
+
+        /* === BUTTONS === */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 45px;
+            background: var(--accent);
+            color: white;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-lux);
+            box-shadow: 0 10px 25px rgba(232, 133, 74, 0.25);
+        }
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(232, 133, 74, 0.35);
+        }
+
+        .btn-outline {
+            padding: 14px 28px;
+            border: 1.5px solid var(--text-dark);
+            color: var(--text-dark);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        .btn-outline:hover { background: var(--text-dark); color: white; }
+
+        /* === HEADER === */
+        .site-header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(255, 249, 242, 0.92);
+            backdrop-filter: blur(15px);
+            z-index: 999;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        .site-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: 3px;
+        }
+        .header-cta { display: none; }
+        @media (min-width: 768px) { .header-cta { display: block; } }
+
+        /* === HERO === */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -20%; right: -10%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(232, 133, 74, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 50px; }
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 25px;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-body);
+            font-weight: 300;
+            max-width: 480px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 900px) { .hero-desc { margin: 0 auto 20px; } }
+
+        .hero-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+        @media (max-width: 900px) { .hero-badges { justify-content: center; } }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-warm);
+            border: 1px solid rgba(232, 133, 74, 0.15);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-dark);
+        }
+
+        .hero-image-box {
+            background: var(--bg-warm);
+            border-radius: var(--radius);
+            aspect-ratio: 4/5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+        .hero-image-box img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-placeholder {
+            text-align: center; color: var(--text-muted); padding: 40px;
+        }
+        .hero-placeholder .emoji { font-size: 4rem; margin-bottom: 15px; display: block; }
+
+        /* === STATS BAR === */
+        .stats-bar {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+            margin: -60px 5% 0;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 50px 0;
+        }
+        @media (max-width: 768px) { .stats-bar { grid-template-columns: 1fr 1fr; gap: 30px; margin: -30px 3% 0; padding: 35px 0; } }
+
+        .stat-item {
+            text-align: center;
+            border-right: 1px solid rgba(0,0,0,0.06);
+        }
+        .stat-item:last-child { border-right: none; }
+        @media (max-width: 768px) { .stat-item { border-right: none; } }
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 8px;
+        }
+
+        /* === PROBLEM SECTION === */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        @media (max-width: 900px) { .problem-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+        .problem-list { list-style: none; margin-top: 35px; }
+        .problem-list li {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-style: italic;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            color: var(--text-body);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .problem-list li::before {
+            content: '';
+            display: inline-block;
+            width: 8px; height: 8px;
+            min-width: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+
+        .side-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: var(--bg-warm);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+        .side-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* === PRODUCTS GRID === */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 60px;
+        }
+        @media (max-width: 900px) { .products-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 500px) { .products-grid { grid-template-columns: 1fr; } }
+
+        .product-card {
+            background: var(--bg-white);
+            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: var(--radius);
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s var(--ease-lux);
+            box-shadow: var(--shadow-card);
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            border-color: rgba(232, 133, 74, 0.2);
+        }
+        .product-icon { font-size: 2.5rem; margin-bottom: 18px; display: block; }
+        .product-card h4 { font-size: 1.15rem; margin-bottom: 10px; }
+        .product-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* === SYSTEM STEPS === */
+        .system-section { background: var(--bg-white); border-radius: var(--radius); margin: 0 2%; }
+        .system-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        @media (max-width: 900px) { .system-steps { grid-template-columns: 1fr; } }
+
+        .step-card {
+            background: var(--bg-section);
+            border-radius: var(--radius);
+            padding: 45px 35px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+        .step-card:hover { box-shadow: var(--shadow-soft); }
+        .step-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: rgba(232, 133, 74, 0.12);
+            position: absolute;
+            top: 20px; right: 25px;
+            line-height: 1;
+        }
+        .step-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+        .step-card p { font-size: 0.9rem; color: var(--text-body); font-weight: 300; }
+
+        /* === OFFER === */
+        .offer-section { background: var(--bg-section); border-radius: var(--radius); margin: 0 2%; }
+        .offer-box {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: var(--radius);
+            padding: 60px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+        @media (max-width: 768px) { .offer-box { padding: 40px 25px; } }
+
+        .offer-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent));
+        }
+
+        .offer-header { text-align: center; margin-bottom: 40px; }
+        .offer-header h2 { font-size: 2.8rem; }
+
+        .line-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .item-name { font-family: var(--font-display); font-size: 1.25rem; }
+        .item-desc { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+        .item-tag {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1.5px solid var(--accent);
+            padding: 5px 14px;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .guarantee-box {
+            background: var(--bg-warm);
+            border: 1.5px dashed var(--accent);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .guarantee-box .gtitle { color: var(--accent-dark); font-weight: 700; font-size: 0.9rem; margin-bottom: 5px; }
+        .guarantee-box p { font-size: 0.85rem; color: var(--text-body); }
+
+        .price-block {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        .price-strike { font-size: 1rem; color: var(--text-muted); text-decoration: line-through; }
+        .price-final {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            line-height: 1;
+            color: var(--text-dark);
+            margin: 10px 0 30px;
+        }
+
+        /* === FOOTER === */
+        .site-footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 80px 5%;
+            margin-top: 100px;
+            border-radius: var(--radius) var(--radius) 0 0;
+            text-align: center;
+        }
+        .site-footer h2 { color: white; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; }
+        .site-footer h2 i { color: var(--accent); }
+
+        .btn-white {
+            display: inline-flex;
+            align-items: center;
+            padding: 20px 45px;
+            background: white;
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s var(--ease-lux);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+        }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255,255,255,0.2); }
+
+        .footer-links {
+            display: flex; justify-content: center; gap: 20px; margin-top: 60px;
+            font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s ease; }
+        .footer-links a:hover { color: white; }
+
+        .legal-stamp {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 20px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding-top: 100px; min-height: auto; padding-bottom: 60px; }
+            .price-final { font-size: 3.5rem; }
+            .offer-header h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <a href="#" class="site-logo">DANUCCI</a>
+        <div class="header-cta">
+            <a href="#oferta" class="btn-outline">Quiero el Sistema</a>
+        </div>
+    </header>
+
+    <!-- === HERO === -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="reveal">
+                    <span class="kicker">10 Años de Experiencia Real</span>
+                    <h1 class="hero-title">El sistema para emprender con <i>postres fríos</i> al por mayor.</h1>
+                    <p class="hero-desc">Aprende paso a paso cómo montar un negocio rentable de postres fríos, con 8 recetas probadas, plantillas de costos reales y el método exacto que operamos durante una década.</p>
+
+                    <div class="hero-badges">
+                        <span class="badge">8 Recetas Completas</span>
+                        <span class="badge">Plantillas de Costos</span>
+                        <span class="badge">Paso a Paso</span>
+                    </div>
+
+                    <a href="#oferta" class="btn-primary">Acceder al Sistema Completo</a>
+                    <br>
+                    <span class="legal-stamp">Marca Registrada INPI Argentina</span>
+                </div>
+
+                <div class="hero-image-box reveal reveal-d2">
+                    <!-- REEMPLAZAR CON FOTO REAL DE @danucciok -->
+                    <div class="hero-placeholder">
+                        <span class="emoji">🍮</span>
+                        <p>Reemplazar con foto real de los postres<br><small style="color: var(--accent);">Usar imagen del Instagram @danucciok</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === STATS BAR === -->
+    <div class="stats-bar reveal">
+        <div class="stat-item">
+            <div class="stat-number">10</div>
+            <div class="stat-label">Años de Operación</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Recetas Probadas</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">+20K</div>
+            <div class="stat-label">Unidades Vendidas</div>
+        </div>
+    </div>
+
+    <!-- === THE OPPORTUNITY === -->
+    <section class="section-pad">
+        <div class="container problem-grid">
+            <div class="reveal">
+                <span class="kicker">La Oportunidad</span>
+                <h2 style="font-size: 2.8rem;">Un negocio que todos <i>consumen,</i> pero pocos saben producir.</h2>
+                <p style="margin-top: 25px; color: var(--text-body); font-weight: 300;">Dietéticas, kioscos, supermercados y cantinas necesitan postres frescos todos los días. La mayoría de esos postres vienen de grandes fábricas, con conservantes y precios altísimos.</p>
+                <p style="margin-top: 15px; color: var(--text-body); font-weight: 300;"><strong style="color: var(--text-dark);">Ahí es donde entrás vos.</strong> Con este sistema probado, producís postres artesanales frescos y los entregás directamente, sin intermediarios ni grandes inversiones.</p>
+
+                <div style="background: var(--bg-warm); border-left: 4px solid var(--accent); padding: 15px 20px; border-radius: 8px; margin-top: 25px; margin-bottom: 25px;">
+                    <p style="font-size: 0.9rem; color: var(--text-dark); margin: 0;"><strong>Tu negocio, tus reglas:</strong> Te entregamos el motor y el sistema completo. Podés aplicar todo creando <strong>tu propia marca</strong>, o si preferís arrancar con ventaja, tenés la opción de <strong>licenciar y usar la nuestra</strong> (DANUCCI).</p>
+                </div>
+
+                <ul class="problem-list">
+                    <li>"Quiero emprender pero no sé por dónde empezar."</li>
+                    <li>"Los negocios de comida parecen muy complicados."</li>
+                    <li>"No tengo un gran capital para invertir."</li>
+                    <li>"No sé cómo conseguir mis primeros clientes."</li>
+                    <li>"No sé cómo calcular costos ni fijar precios."</li>
+                </ul>
+            </div>
+            <div class="side-image reveal reveal-d2">
+                <!-- REEMPLAZAR CON FOTO REAL DE @danucciok -->
+                <div class="hero-placeholder">
+                    <span class="emoji">📦</span>
+                    <p>Foto de producción o entrega<br><small style="color: var(--accent);">Usar imagen real</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === 8 PRODUCTS === -->
+    <section class="section-pad" style="background: var(--bg-white); border-radius: var(--radius); margin: 0 2%;">
+        <div class="container">
+            <div class="reveal" style="text-align: center;">
+                <span class="kicker">8 Productos Estrella</span>
+                <h2 style="font-size: 2.8rem; max-width: 700px; margin: 0 auto;">Cada receta probada en más de <i>1.000 entregas reales</i></h2>
+                <p style="margin: 20px auto 0; max-width: 550px; color: var(--text-body); font-weight: 300;">No son recetas de internet. Son fórmulas exactas que operamos profesionalmente durante 10 años, optimizadas para producción al por mayor.</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card reveal reveal-d1">
+                    <span class="product-icon">🥛</span>
+                    <h4>Colchón de Frutas</h4>
+                    <p>Fruta en cubos + crema batida + granola. El imbatible, en 500cc y 250cc.</p>
+                </div>
+                <div class="product-card reveal reveal-d1">
+                    <span class="product-icon">🍓</span>
+                    <h4>Jelly</h4>
+                    <p>Fruta + gelatina de cereza firme + rulo de crema. Colorido e irresistible.</p>
+                </div>
+                <div class="product-card reveal reveal-d2">
+                    <span class="product-icon">🌱</span>
+                    <h4>Colchón Vegano</h4>
+                    <p>Versión no láctea del clásico. Un mercado en crecimiento constante.</p>
+                </div>
+                <div class="product-card reveal reveal-d2">
+                    <span class="product-icon">🫐</span>
+                    <h4>Mousse Frutilla</h4>
+                    <p>Pulpa real de frutilla + mousse de yogur + granola tropical.</p>
+                </div>
+                <div class="product-card reveal reveal-d3">
+                    <span class="product-icon">🍦</span>
+                    <h4>Mousse Vainilla</h4>
+                    <p>Ensalada de frutas + mousse de yogur vainilla + granola.</p>
+                </div>
+                <div class="product-card reveal reveal-d3">
+                    <span class="product-icon">🍫</span>
+                    <h4>Chocotorta</h4>
+                    <p>Chocolinas + dulce de leche + crema batida. El favorito argentino en porción.</p>
+                </div>
+                <div class="product-card reveal reveal-d3">
+                    <span class="product-icon">☕</span>
+                    <h4>Tiramisú</h4>
+                    <p>Vainillas + café con coñac + crema a baño maría + cacao amargo.</p>
+                </div>
+                <div class="product-card reveal reveal-d4">
+                    <span class="product-icon">🍰</span>
+                    <h4>Cheesecake</h4>
+                    <p>Base Lincoln + mousse chocolate blanco + pulpa de frutilla.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === THE SYSTEM === -->
+    <section class="system-section section-pad">
+        <div class="container">
+            <div class="reveal" style="text-align: center;">
+                <span class="kicker">El Ciclo DANUCCI</span>
+                <h2 style="font-size: 2.8rem; max-width: 700px; margin: 0 auto;">Un sistema simple que <i>funciona todos los días.</i></h2>
+                <p style="margin: 20px auto 0; max-width: 580px; color: var(--text-body); font-weight: 300;">No necesitás un local enorme ni una fábrica. Necesitás método, constancia y este sistema probado durante 10 años.</p>
+            </div>
+
+            <div class="system-steps">
+                <div class="step-card reveal reveal-d1">
+                    <span class="step-number">01</span>
+                    <h3>Recibí Pedidos</h3>
+                    <p>Aprendé cómo conseguir tus primeros comercios, presentarles el producto y generar una cartera de clientes que te pidan de forma recurrente.</p>
+                </div>
+                <div class="step-card reveal reveal-d2">
+                    <span class="step-number">02</span>
+                    <h3>Producílos</h3>
+                    <p>Con las 8 recetas probadas y las plantillas de costos, producí exactamente lo que ya tenés vendido. Cero desperdicio, máximo margen.</p>
+                </div>
+                <div class="step-card reveal reveal-d3">
+                    <span class="step-number">03</span>
+                    <h3>Armá tu Rutina de Reparto</h3>
+                    <p>Diseñá tu propia logística de entrega, adaptándola a tu zona, tus horarios y tu estilo de vida. Vos ponés las reglas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === VALUE STACK === -->
+    <section class="offer-section section-pad" id="oferta">
+        <div class="container reveal">
+            <div class="offer-box">
+                <div class="offer-header">
+                    <span class="kicker">El Manual Completo</span>
+                    <h2>Todo lo que necesitás <i>para arrancar</i></h2>
+                </div>
+
+                <div class="line-item">
+                    <div>
+                        <div class="item-name">Manual DANUCCI (Guía Completa)</div>
+                        <div class="item-desc">8 recetas exactas + sistema de producción + estrategia de ventas</div>
+                    </div>
+                </div>
+                <div class="line-item">
+                    <div>
+                        <div class="item-name">Plantillas de Costos por Producto</div>
+                        <div class="item-desc">Calculá tu precio de venta y margen al instante</div>
+                    </div>
+                    <div><span class="item-tag">Bonus</span></div>
+                </div>
+                <div class="line-item">
+                    <div>
+                        <div class="item-name">Guía de Primeros Clientes</div>
+                        <div class="item-desc">La estrategia que nos permitió vender +20.000 unidades</div>
+                    </div>
+                    <div><span class="item-tag">Bonus</span></div>
+                </div>
+                <div class="line-item">
+                    <div>
+                        <div class="item-name">Errores que Cometimos (y cómo evitarlos)</div>
+                        <div class="item-desc">10 años de aprendizaje destilados para vos</div>
+                    </div>
+                    <div><span class="item-tag">Bonus</span></div>
+                </div>
+
+                <div class="guarantee-box">
+                    <div class="gtitle">Garantía de Satisfacción — 7 Días</div>
+                    <p>Si no te sirve, te devolvemos el 100% sin preguntas. Así de simple.</p>
+                </div>
+
+                <div class="price-block">
+                    <div class="price-strike">Valor real del sistema: $150.000</div>
+                    <div class="price-final">$50.000</div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: -10px; margin-bottom: 30px;">Pago único. Acceso inmediato. Sin suscripciones.</p>
+                    <a href="#" class="btn-primary" style="width: 100%; max-width: 420px; padding: 22px;">Quiero el Sistema DANUCCI</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer class="site-footer">
+        <div class="container">
+            <h2 class="reveal">¿Cuánto más vas a esperar para<br><i>emprender en serio?</i></h2>
+            <p class="reveal reveal-d1" style="max-width: 550px; margin: 20px auto 40px; font-weight: 300; color: rgba(255,255,255,0.7);">Tenés en tus manos 10 años de experiencia real por menos de lo que cuesta una cena para dos. El negocio de los postres fríos al por mayor te espera.</p>
+            <a href="#oferta" class="btn-white reveal reveal-d2">Acceder Ahora</a>
+            <div class="footer-links">
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+                <a href="#">Soporte</a>
+                <span style="color: rgba(255,255,255,0.3);">DANUCCI es marca registrada INPI</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

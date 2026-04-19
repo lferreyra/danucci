@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANUCCI | El Método para Emprender con Éxito</title>
+    
+    <!-- Fuentes Boutique (Fraunces + Outfit) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        @font-face {
+            font-family: 'Colonna MT';
+            src: url('COLONNA.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-linen: #F4F1EA;
+            --bg-clay: #EBE6DC;
+            --bg-dark: #0A0A0A;
+            --accent-copper: #AD513B;
+            --text-dark: #1A1A1A;
+            --text-muted: #5C5C5C;
+            --font-display: 'Fraunces', serif;
+            --font-body: 'Outfit', sans-serif;
+            --radius-lux: 40px;
+            --radius-btn: 50px;
+            --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-linen);
+            color: var(--text-dark);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+
+        /* --- NAV BOUTIQUE --- */
+        nav {
+            padding: 50px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0; left: 0; width: 100%;
+            z-index: 100;
+        }
+        .logo {
+            font-family: 'Colonna MT', 'Colonna STD', serif;
+            font-size: 2.4rem; 
+            letter-spacing: 0.02em;
+            font-weight: normal !important;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+        .nav-links { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; font-weight: 600; }
+
+        /* --- HERO ASIMÉTRICO (Aromix Style) --- */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 5.5fr 4.5fr;
+            align-items: center;
+            gap: 80px;
+            padding-top: 100px;
+        }
+        @media (max-width: 1024px) { .hero { grid-template-columns: 1fr; text-align: center; } }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 0.9;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        .hero-title i { font-style: italic; color: var(--accent-copper); font-weight: 300; }
+
+        .hero-image-box {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: flex-end;
+        }
+        @media (max-width: 1024px) { .hero-image-box { height: 60vh; } }
+        
+        .hero-image-box img {
+            width: 100%;
+            height: 85%;
+            object-fit: cover;
+            border-radius: 400px 400px 0 0; /* Arco Aromix */
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+            filter: brightness(0.95);
+        }
+
+        .btn-luxury {
+            display: inline-block;
+            padding: 24px 60px;
+            background: var(--bg-dark);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid var(--bg-dark);
+            transition: all 0.5s var(--ease-lux);
+            margin-top: 20px;
+        }
+        .btn-luxury:hover { background: transparent; color: var(--bg-dark); }
+
+        /* --- HISTORIA "PHILOSOPHY" BLOCK --- */
+        .story-block {
+            padding: 180px 0;
+            display: grid;
+            grid-template-columns: 4fr 1.5fr 4.5fr;
+            align-items: center;
+        }
+        @media (max-width: 1024px) { .story-block { grid-template-columns: 1fr; gap: 60px; } }
+
+        .story-text h2 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        .story-tag { font-family: var(--font-body); font-size: 0.7rem; color: var(--accent-copper); text-transform: uppercase; letter-spacing: 0.4em; display: block; margin-bottom: 20px; font-weight: 700; }
+
+        .story-image-overlap {
+            width: 100%;
+            border-radius: var(--radius-lux);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+            position: relative;
+            z-index: 5;
+        }
+
+        /* --- PARALLAX REFINED --- */
+        .parallax-divider {
+            min-height: 600px;
+            background-image: url('Imagenes/auto.jpg.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 5%;
+        }
+        .parallax-divider::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.65); }
+        .parallax-content { position: relative; z-index: 2; color: white; max-width: 800px; }
+        .parallax-title { font-family: var(--font-display); font-size: 4rem; margin-bottom: 30px; font-weight: 300; }
+        .parallax-text { font-family: var(--font-body); font-size: 1.3rem; font-weight: 300; line-height: 1.8; opacity: 0.9; }
+
+        /* --- TESTIMONIALS & MARQUEE --- */
+        .testimonials { padding: 100px 0; background-color: var(--bg-linen); overflow: hidden; }
+        .testimonials-header { text-align: center; margin-bottom: 50px; }
+        .testimonials-header h2 { font-family: var(--font-display); font-size: 3.5rem; font-weight: 300; line-height: 1; margin-top: 15px; }
+        
+        .marquee-container {
+            width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+            overflow: hidden; padding: 20px 0; display: flex; flex-direction: column; gap: 20px;
+        }
+        .ig-carousel-wrapper { overflow: hidden; white-space: nowrap; display: flex; width: 100%; }
+        .marquee-track { display: inline-flex; animation: scrollMarquee var(--speed) linear infinite; }
+        .marquee-track.reverse { animation-direction: reverse; }
+        .marquee-track:hover { animation-play-state: paused; }
+        @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .ig-card {
+            flex: 0 0 340px; margin: 0 10px; white-space: normal;
+            background: #fff; border: 1px solid #e1e1e1; border-radius: 12px; padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04); display: flex; align-items: flex-start; gap: 12px; text-align: left;
+        }
+        .ig-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid #efefef; flex-shrink: 0; }
+        .ig-content { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.35; color: #262626; flex-grow: 1; }
+        .ig-username { font-weight: 600; color: #000; margin-right: 4px; }
+        .ig-actions { margin-top: 10px; display: flex; gap: 12px; font-size: 12px; color: #737373; font-weight: 500; }
+        .ig-heart { width: 14px; height: 14px; color: #8e8e8e; flex-shrink: 0; margin-top: 2px; }
+        
+        .cafe-bg { background-image: url('Imagenes/BG.jpg'); min-height: 700px; }
+
+        /* --- FOOTER LUX --- */
+        .lux-footer { 
+            background: var(--bg-dark); 
+            color: white; 
+            padding: 100px 5% 40px; 
+            text-align: center; 
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            margin-top: 0;
+        }
+        .footer-content { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        .footer-links { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
+        .footer-links a { color: white; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.5; transition: 0.3s var(--ease-lux); }
+        .footer-links a:hover { opacity: 1; color: var(--accent-copper); }
+        .footer-social a { color: white; opacity: 0.5; transition: 0.3s; display: inline-block; width: 26px; height: 26px; }
+        .footer-social a:hover { opacity: 1; transform: scale(1.1); color: var(--accent-copper); }
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 1000px; margin-inline: auto; }
+        .footer-bottom p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.4; margin: 0; }
+
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1.2s var(--ease-lux); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        footer { padding: 120px 0; text-align: center; border-top: 1px solid rgba(0,0,0,0.05); }
+        .footer-logo { font-family: 'Colonna MT', 'Colonna STD', serif; font-size: 3rem; margin-bottom: 30px; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Danucci<span style="font-size: 0.4em; vertical-align: super; margin-left: 2px;">®</span></a>
+        <div class="nav-links">Herencia & Sistema</div>
+    </nav>
+
+    <!-- HERO AROMIX -->
+    <section class="hero container">
+        <div class="hero-content reveal">
+            <h1 class="hero-title">El arte del <br><i>Emprendimiento</i> <br>Mayorista.</h1>
+            <p style="font-size: 1.2rem; max-width: 500px; margin-bottom: 50px; color: var(--text-muted);">Transformamos una crisis familiar de 2015 en el sistema más sofisticado para vender postres de alta rotación en Argentina.</p>
+            <a href="test.html" class="btn-luxury">Verificar mi Calificación</a>
+        </div>
+        <div class="hero-image-box reveal" style="transition-delay: 0.2s;">
+            <img src="Imagenes/jelly 500g frente.JPG" alt="Jelly DANUCCI">
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY / STORY -->
+    <section class="container" style="border-top: 1px solid rgba(0,0,0,0.1);">
+        <div class="story-block">
+            <div class="story-text reveal">
+                <span class="story-tag">Nuestra Filosofía</span>
+                <h2>¿Qué tienes en <br>casa para <i>convertir</i> <br>en un negocio?</h2>
+                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.8;">En 2015, bajo una lluvia torrencial, nos hicimos esa pregunta. Lo que nació como una necesidad de supervivencia se convirtió en un método con 10 años de respaldo profesional.</p>
+                <a href="test.html" style="margin-top: 40px; display: inline-block; color: var(--bg-dark); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; text-decoration: none; border-bottom: 2px solid var(--accent-copper);">Saber más del Método</a>
+            </div>
+            <div></div> <!-- Spacing grid -->
+            <div class="reveal" style="transition-delay: 0.3s;">
+                <img src="Imagenes/chocotorta.JPG" class="story-image-overlap" alt="La primera Chocotorta">
+            </div>
+        </div>
+    </section>
+
+    <!-- REFINED PARALLAX / STORYTELLING -->
+    <div class="parallax-divider">
+        <div class="parallax-content reveal">
+            <h2 class="parallax-title">Un legado de <i>diez años.</i></h2>
+            <p class="parallax-text">Todo comenzó en un escenario como el de la foto. Año 2015, bajo una lluvia torrencial. Aquel viejo auto no solo fue nuestro refugio de la tormenta, sino el primer "escaparate" desde donde vendimos para intentar superar una dolorosa crisis y ruina familiar. Lo que empezó como un intento de supervivencia desde las butacas del coche, hoy se ha convertido en el sistema más sofisticado para crear negocios de altísima rentabilidad.</p>
+        </div>
+    </div>
+
+    <!-- IG TESTIMONIALS CAROUSEL -->
+    <section class="testimonials">
+        <div class="testimonials-header reveal">
+            <span class="story-tag" style="justify-content: center; display: flex;">Comunidad</span>
+            <h2>El impacto de <br>nuestros <i>sabores</i></h2>
+        </div>
+        
+        <div id="reviewsContainer">
+            <!-- Testimonios inyectados por JS en formato Marquee -->
+        </div>
+    </section>
+
+    <!-- MISSION / CAFE PARALLAX -->
+    <div class="parallax-divider cafe-bg">
+        <div class="parallax-content reveal"  style="text-align: center; max-width: 900px;">
+            <h2 style="font-family: var(--font-display); font-size: 5rem; line-height: 0.9; margin-bottom: 30px; font-weight: 300; color: white;">Un sistema para <br>quienes buscan el <i>Éxito.</i></h2>
+            <p class="parallax-text" style="font-size: 1.4rem; font-weight: 300; max-width: 750px; margin: 0 auto 50px; opacity: 0.95; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">No vendemos recetas. Entregamos el plano completo de un negocio de postres mayoristas que ha sostenido a nuestra familia y ahora puede sostener la tuya.</p>
+            <a href="test.html" class="btn-luxury" style="border-color: white; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px);">Iniciar Cuestionario</a>
+        </div>
+    </div>
+
+    <footer class="lux-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <p style="font-family: 'Colonna MT', 'Colonna STD', serif; font-size: 3.5rem; margin-bottom: 20px; font-weight: normal !important;">Danucci<span style="font-size: 0.35em; vertical-align: super; margin-left: 4px;">®</span></p>
+                <p style="font-size: 0.95rem; font-weight: 300; opacity: 0.7; max-width: 350px; margin: 0 auto;">El método para emprender con éxito.</p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Soporte</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="https://www.instagram.com/danucciok/" target="_blank" aria-label="Instagram" style="margin-right: 15px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://www.facebook.com/danucciok/" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Danucci Boutique Gastronómica Argentina. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            const baseComments = [
+                "Estos postres son lo mas rico que probe en mi vida.",
+                "La chocotorta es incrible! Me encantan!",
+                "He replazada mis cenas con el colchon de frutas vegano, y a veces un Jelly.",
+                "Me encanta poder contar con esta opcion de postre que es fuera de lo comun",
+                "El tiramisú es lo más!",
+                "Yogurt muse de frutilla, mi preferido lejos!",
+                "No puedo creer lo que es ese cheesecake, una obra de arte.",
+                "Pedí para el cumple de mi hijo y volaron todos los postres.",
+                "La atención es excelente y los productos son de otro nivel.",
+                "Hacía mil que no probaba algo tan casero y gourmet.",
+                "El postre de yogurt de vainilla es súper cremoso, me robó el corazón.",
+                "Ideal para regalar y quedar como un rey.",
+                "Probamos el pack de degustación y no sabemos con cuál quedarnos.",
+                "Calidad boutique real, se nota el amor en cada detalle.",
+                "La textura del mousse de frutilla es aire pura, riquísimo.",
+                "El jelly es súper refrescante, ideal para después de un asado.",
+                "Ya soy cliente fija de los fines de semana, Danucci es mi debilidad.",
+                "Increíble la variedad que tienen, siempre hay algo nuevo.",
+                "Postres que parecen sacados de una revista.",
+                "La mejor opción para los que buscamos algo premium.",
+                "No dejen de probar el colchón de frutas, es una explosión de sabor.",
+                "Presentación impecable y sabor inigualable.",
+                "Un viaje de ida, sobre todo el tiramisú.",
+                "Simplemente los mejores postres que he comprado.",
+                "La relación precio-calidad es insuperable para este nivel.",
+                "Danucci nunca falla, recomendado 100%.",
+                "Lo mejor que le pasó a mi mesa dulce este año.",
+                "Riquísimo todo, el packaging es súper fino también.",
+                "Se sienten ingredientes de primera, nada que ver con lo industrial.",
+                "Mis amigos quedaron fascinados cuando serví Danucci.",
+                "El equilibrio justo de dulzor, nada empalagoso.",
+                "Postres boutique que valen cada centavo.",
+                "La chocotorta tiene ese toque secreto que la hace única.",
+                "Fui por uno y me terminé llevando media heladera jaja.",
+                "Excelente opción para empresas también, quedamos muy bien."
+            ];
+
+            const femaleNames = [
+                "Sofía L.", "Valeria G.", "Juliana F.", "Camila P.", "Delfina B.", "Agustina C.", "Victoria D.", "Martina K.", "Catalina Q.", "Lola W.",
+                "Milagros A.", "Renata L.", "Pilar U.", "Malena S.", "Juana B.", "Antonella S.", "Lucía E.", "Gimena W.", "Paola R.", "Elena M."
+            ];
+            const maleNames = [
+                "Lucas M.", "Bautista R.", "Mateo S.", "Ignacio T.", "Tomás V.", "Felipe N.", "Benjamín J.", "Enzo H.", "Santino O.", "Bruno Z.",
+                "Thiago P.", "Joaquín E.", "Facundo M.", "Ramiro G.", "Iván R.", "Santiago D.", "Martín P.", "Diego C.", "Federico J.", "Agustín N."
+            ];
+
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            const container = document.getElementById('reviewsContainer');
+            if (container) {
+                container.innerHTML = '';
+                container.className = 'marquee-container';
+
+                const femaleAvatars = shuffle([...Array(99).keys()].map(i => i + 1));
+                const maleAvatars = shuffle([...Array(99).keys()].map(i => i + 1));
+                let fIdx = 0, mIdx = 0;
+
+                const buildRow = (speed, reverse) => {
+                    const wrap = document.createElement('div');
+                    wrap.className = 'ig-carousel-wrapper';
+                    wrap.style.setProperty('--speed', speed + 's');
+                    
+                    const track = document.createElement('div');
+                    track.className = 'marquee-track' + (reverse ? ' reverse' : '');
+                    
+                    const shuffledComments = shuffle([...baseComments]);
+                    
+                    let html = '';
+                    const count = Math.min(shuffledComments.length, 12); 
+                    
+                    for (let i = 0; i < count; i++) {
+                        const isFemale = Math.random() > 0.5;
+                        const text = shuffledComments[i];
+                        const name = isFemale 
+                            ? femaleNames[Math.floor(Math.random() * femaleNames.length)] 
+                            : maleNames[Math.floor(Math.random() * maleNames.length)];
+                        
+                        const gender = isFemale ? 'women' : 'men';
+                        let avatarId;
+                        if (isFemale) {
+                            avatarId = femaleAvatars[fIdx % 99];
+                            fIdx++;
+                        } else {
+                            avatarId = maleAvatars[mIdx % 99];
+                            mIdx++;
+                        }
+                        const avatarUrl = `https://randomuser.me/api/portraits/${gender}/${avatarId}.jpg`;
+                        
+                        const likes = Math.floor(Math.random() * 45) + 3;
+                        const time = Math.floor(Math.random() * 20) + 1;
+                        const timeUnit = Math.random() > 0.4 ? 'h' : 'd';
+                        
+                        html += `
+                            <div class="ig-card">
+                                <img src="${avatarUrl}" class="ig-avatar" alt="User">
+                                <div class="ig-content">
+                                    <div><span class="ig-username">${name}</span> ${text}</div>
+                                    <div class="ig-actions">
+                                        <span>${time} ${timeUnit}</span>
+                                        <span>${likes} Me gusta</span>
+                                        <span>Responder</span>
+                                    </div>
+                                </div>
+                                <svg viewBox="0 0 24 24" class="ig-heart" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.174 1.8 1.174 2.634 0a4.202 4.202 0 0 1 3.275-1.941Z"></path></svg>
+                            </div>
+                        `;
+                    }
+                    track.innerHTML = html + html;
+                    wrap.appendChild(track);
+                    container.appendChild(wrap);
+                };
+
+                buildRow(75, false); 
+                buildRow(90, true);  
+                buildRow(85, false); 
+            }
+        });
+    </script>
+</body>
+</html>

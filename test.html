@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Calificación | El Método Danucci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        @font-face {
+            font-family: 'Colonna MT';
+            src: url('COLONNA.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        :root {
+            --bg-linen: #F4F1EA;
+            --bg-dark: #0A0A0A;
+            --accent-copper: #AD513B;
+            --font-display: 'Fraunces', serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-linen);
+            color: var(--bg-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 6%;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lux-footer { 
+            background: var(--bg-dark); 
+            color: white; 
+            padding: 100px 5% 40px; 
+            text-align: center; 
+            border-top-left-radius: 60px;
+            border-top-right-radius: 60px;
+            width: 100%;
+        }
+        .footer-content { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        .footer-links { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
+        .footer-links a { color: white; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.5; transition: 0.3s var(--ease-lux); }
+        .footer-links a:hover { opacity: 1; color: var(--accent-copper); }
+        .footer-social a { color: white; opacity: 0.5; transition: 0.3s; display: inline-block; width: 26px; height: 26px; }
+        .footer-social a:hover { opacity: 1; transform: scale(1.1); color: var(--accent-copper); }
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 1000px; margin-inline: auto; }
+        .footer-bottom p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.4; margin: 0; }
+
+        .test-container {
+            max-width: 850px;
+            width: 100%;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .step-label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            opacity: 0.4;
+            display: block;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .question-text {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            line-height: 1;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .option-btn {
+            background: none;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 24px 35px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-lux);
+            color: var(--bg-dark);
+            border-radius: 2px;
+        }
+        .option-btn:hover {
+            background: var(--bg-dark);
+            color: white;
+            border-color: var(--bg-dark);
+            transform: translateY(-5px);
+        }
+
+        .progress-indicator {
+            height: 1px; width: 100%; background: rgba(0,0,0,0.05); margin-top: 120px; position: relative;
+        }
+        .progress-bar {
+            height: 1px; width: 20%; background: var(--accent-copper); position: absolute; left: 0; top: 0; transition: width 0.8s ease;
+        }
+
+        .view { display: none; }
+        .view.active { display: block; animation: fadeIn 1s ease forwards; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .loader {
+            width: 40px; height: 40px; border: 1px solid rgba(0,0,0,0.05); border-top-color: black; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 30px;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .status-msg { font-family: var(--font-display); font-size: 3.5rem; margin-bottom: 20px; font-weight: 300; }
+        .status-p { font-size: 1.25rem; font-weight: 300; opacity: 0.6; line-height: 1.6; max-width: 550px; margin: 0 auto; }
+        
+        .btn-aromix {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 20px 50px;
+            background: var(--bg-dark);
+            color: white;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="test-container">
+        <!-- VISTA DE PREGUNTAS -->
+        <div id="question-view" class="view active">
+            <span class="step-label" id="step-label">Fase 1 / 5</span>
+            <h2 class="question-text" id="question-text">Punto de partida</h2>
+            
+            <div class="options-grid" id="options">
+                <!-- Se cargan vía JS -->
+            </div>
+
+            <div class="progress-indicator">
+                <div class="progress-bar" id="progress"></div>
+            </div>
+        </div>
+
+        <!-- VISTA DE PROCESANDO -->
+        <div id="processing-view" class="view">
+            <div class="loader"></div>
+            <h2 class="status-msg">Verificando Perfil...</h2>
+            <p class="status-p">Estamos analizando tu visión de negocio y recursos para asegurar que eres compatible con el Sistema Danucci.</p>
+        </div>
+
+        <!-- VISTA DE NO CALIFICADO -->
+        <div id="fail-view" class="view">
+            <h2 class="status-msg">No es tu momento</h2>
+            <p class="status-p">El Método Danucci exige un compromiso total con la calidad y los procesos. Basado en tus respuestas, hoy no cuentas con la disponibilidad necesaria.</p>
+            <a href="index.html" class="btn-aromix">Regresar al Inicio</a>
+        </div>
+    </div>
+
+    <footer class="lux-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <p style="font-family: 'Colonna MT', 'Colonna STD', serif; font-size: 3.5rem; margin-bottom: 20px; font-weight: normal !important;">Danucci</p>
+                <p style="font-size: 0.95rem; font-weight: 300; opacity: 0.7; max-width: 350px; margin: 0 auto;">El plano detallado para tu éxito en la pastelería.</p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Soporte</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="https://www.instagram.com/danucciok/" target="_blank" aria-label="Instagram" style="margin-right: 15px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://www.facebook.com/danucciok/" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Danucci Boutique Gastronómica Argentina. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                q: "¿Cuál es tu motor para emprender hoy?",
+                options: [
+                    { t: "Estabilidad financiera para mi familia", s: 10 },
+                    { t: "Dar trabajo y crear un legado", s: 15 },
+                    { t: "Ganar dinero rápido sin esfuerzo", s: 0 }
+                ]
+            },
+            {
+                q: "Tiempo semanal que puedes dedicarle:",
+                options: [
+                    { t: "Menos de 10 horas", s: -20 },
+                    { t: "Entre 20 y 30 horas", s: 10 },
+                    { t: "Dedicación exclusiva (Full-time)", s: 20 }
+                ]
+            },
+            {
+                q: "Frente a un 'No' de un posible punto de venta...",
+                options: [
+                    { t: "Lo tomo personal y me desanimo", s: 0 },
+                    { t: "Analizo y busco el próximo comercio", s: 15 },
+                    { t: "Aplico el speech de venta profesional", s: 15 }
+                ]
+            },
+            {
+                q: "¿Cómo visualizas tu negocio en 6 meses?",
+                options: [
+                    { t: "Ganando un extra para mí", s: 5 },
+                    { t: "Liderando un equipo de distribución", s: 20 },
+                    { t: "Con un punto de venta físico propio", s: 20 }
+                ]
+            },
+            {
+                q: "¿Qué crees que garantiza el éxito?",
+                options: [
+                    { t: "La mejor receta del mundo", s: 5 },
+                    { t: "Gestión de costos y sistema replicable", s: 20 },
+                    { t: "La suerte en la ubicación", s: 0 }
+                ]
+            }
+        ];
+
+        let currentStep = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('step-label').innerText = `Fase ${currentStep + 1} / ${questions.length}`;
+            document.getElementById('question-text').innerText = q.q;
+            document.getElementById('progress').style.width = ((currentStep + 1) / questions.length * 100) + '%';
+            
+            const optionsBox = document.getElementById('options');
+            optionsBox.innerHTML = '';
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt.t;
+                btn.onclick = () => {
+                    score += opt.s;
+                    nextStep();
+                };
+                optionsBox.appendChild(btn);
+            });
+        }
+
+        function nextStep() {
+            currentStep++;
+            if (currentStep < questions.length) {
+                loadQuestion();
+            } else {
+                processResults();
+            }
+        }
+
+        function processResults() {
+            document.getElementById('question-view').classList.remove('active');
+            document.getElementById('processing-view').classList.add('active');
+            
+            setTimeout(() => {
+                if (score < 40) {
+                    showFail();
+                } else {
+                    window.location.href = 'sales.html';
+                }
+            }, 3000);
+        }
+
+        function showFail() {
+            document.getElementById('processing-view').classList.remove('active');
+            document.getElementById('fail-view').classList.add('active');
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>

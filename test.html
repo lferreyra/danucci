@@ -32,12 +32,9 @@
             color: var(--bg-dark);
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 6%;
-            overflow-x: hidden;
-            display: flex;
             flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
         }
 
         .lux-footer { 
@@ -45,8 +42,6 @@
             color: white; 
             padding: 100px 5% 40px; 
             text-align: center; 
-            border-top-left-radius: 60px;
-            border-top-right-radius: 60px;
             width: 100%;
         }
         .footer-content { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px; }
@@ -62,7 +57,11 @@
             max-width: 850px;
             width: 100%;
             text-align: center;
-            padding: 80px 0;
+            padding: 80px 6%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .step-label {

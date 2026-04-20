@@ -45,25 +45,56 @@
 
         .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
 
-        /* --- NAV BOUTIQUE --- */
-        nav {
-            padding: 50px 5%;
+        /* --- HEADER / NAV REFINADO --- */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: absolute;
-            top: 0; left: 0; width: 100%;
-            z-index: 100;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s var(--ease-lux);
         }
+        
         .logo {
             font-family: 'Colonna MT', 'Colonna STD', serif;
-            font-size: 2.8rem; 
+            font-size: 2.2rem; 
             letter-spacing: 0.05em;
             font-weight: normal !important;
             text-decoration: none;
-            color: var(--text-dark);
+            color: #FFFFFF;
+            transition: opacity 0.3s;
         }
-        .nav-links { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; font-weight: 600; }
+        .logo:hover { opacity: 0.8; }
+
+        .btn-nav {
+            background: var(--accent-copper);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        .btn-nav:hover {
+            background: transparent;
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 5%; }
+            .logo { font-size: 1.8rem; }
+            .btn-nav { padding: 10px 20px; font-size: 0.7rem; }
+        }
 
         /* --- HERO ASIMÉTRICO (Aromix Style) --- */
         .hero {
@@ -78,8 +109,8 @@
 
         .hero-title {
             font-family: var(--font-display);
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            line-height: 0.9;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            line-height: 1;
             font-weight: 300;
             margin-bottom: 40px;
         }
@@ -95,11 +126,14 @@
         
         .hero-image-box img {
             width: 100%;
-            height: 85%;
+            height: 90%;
             object-fit: cover;
-            border-radius: 400px 400px 0 0; /* Arco Aromix */
-            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
-            filter: brightness(0.95);
+            border-radius: 300px 300px 0 0;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .hero-image-box img { border-radius: 150px 150px 0 0; height: 100%; }
+            .hero { padding-top: 120px; gap: 40px; }
         }
 
         .btn-luxury {
@@ -176,7 +210,7 @@
 
         .story-text h2 {
             font-family: var(--font-display);
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 7vw, 4rem);
             line-height: 1;
             margin-bottom: 40px;
             font-weight: 300;
@@ -207,13 +241,18 @@
         }
         .parallax-divider::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.65); }
         .parallax-content { position: relative; z-index: 2; color: white; max-width: 800px; }
-        .parallax-title { font-family: var(--font-display); font-size: 4rem; margin-bottom: 30px; font-weight: 300; }
-        .parallax-text { font-family: var(--font-body); font-size: 1.3rem; font-weight: 300; line-height: 1.8; opacity: 0.9; }
+        .parallax-title { font-family: var(--font-display); font-size: clamp(2rem, 8vw, 4.5rem); margin-bottom: 30px; font-weight: 300; }
+        .parallax-text { font-family: var(--font-body); font-size: 1.1rem; font-weight: 300; line-height: 1.6; opacity: 0.9; }
+
+        @media (max-width: 768px) {
+            .parallax-divider, .legacy-section { background-attachment: scroll; }
+            .parallax-divider { min-height: 450px; }
+        }
 
         /* --- TESTIMONIALS & MARQUEE --- */
         .testimonials { padding: 100px 0; background-color: var(--bg-linen); overflow: hidden; }
         .testimonials-header { text-align: center; margin-bottom: 50px; }
-        .testimonials-header h2 { font-family: var(--font-display); font-size: 3.5rem; font-weight: 300; line-height: 1; margin-top: 15px; }
+        .testimonials-header h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 7vw, 3.5rem); font-weight: 300; line-height: 1.1; margin-top: 15px; }
         
         .marquee-container {
             width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
@@ -267,10 +306,10 @@
 </head>
 <body>
 
-    <nav>
+    <header>
         <a href="#" class="logo">Danucci<span style="font-size: 0.4em; vertical-align: super; margin-left: 2px;">®</span></a>
-        <div class="nav-links">Herencia & Sistema</div>
-    </nav>
+        <a href="test.html" class="btn-nav">Iniciar</a>
+    </header>
 
     <!-- HERO AROMIX -->
     <section class="hero container">

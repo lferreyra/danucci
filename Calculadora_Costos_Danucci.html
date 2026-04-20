@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Costos | Método DANUCCI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-linen: #F4F1EA;
+            --bg-dark: #0A0A0A;
+            --accent-copper: #AD513B;
+            --text-muted: #5C5C5C;
+            --radius-lux: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-linen);
+            color: var(--bg-dark);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .tool-grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius-lux);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--bg-linen);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #E1E1E1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--accent-copper);
+        }
+
+        .result-box {
+            background: var(--bg-dark);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .result-row.total {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+            margin-top: 15px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            opacity: 1;
+            color: var(--accent-copper);
+        }
+
+        .btn-calc {
+            width: 100%;
+            padding: 15px;
+            background: var(--accent-copper);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-calc:hover {
+            background: #943d2a;
+            transform: translateY(-2px);
+        }
+
+        .selector {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #E1E1E1;
+            font-family: inherit;
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Calculadora de Costos</h1>
+            <p class="subtitle">Método DANUCCI — Sistema Proyectado de Rentabilidad</p>
+        </header>
+
+        <div class="tool-grid">
+            <!-- INPUT PARAMS -->
+            <div class="card">
+                <h2>1. Precios de Insumos</h2>
+                <div class="input-group">
+                    <label>Crema Ledevit (5L)</label>
+                    <input type="number" id="in-crema" value="12000">
+                </div>
+                <div class="input-group">
+                    <label>Latas Fruta (Promedio)</label>
+                    <input type="number" id="in-fruta" value="1800">
+                </div>
+                <div class="input-group">
+                    <label>Yogur Bebible (1L)</label>
+                    <input type="number" id="in-yogur" value="1500">
+                </div>
+                <div class="input-group">
+                    <label>Granola (1kg)</label>
+                    <input type="number" id="in-granola" value="5500">
+                </div>
+                <div class="input-group">
+                    <label>Queso Crema (1kg)</label>
+                    <input type="number" id="in-queso" value="6000">
+                </div>
+                <div class="input-group">
+                    <label>Insumos Desechables (Vaso + Tapa + Cuchara)</label>
+                    <input type="number" id="in-packaging" value="250">
+                </div>
+            </div>
+
+            <!-- CALCULATOR -->
+            <div class="card">
+                <h2>2. Configurar Producción</h2>
+                <div class="input-group">
+                    <label>Seleccionar Producto</label>
+                    <select id="select-prod" class="selector">
+                        <option value="colchon">Colchón de Frutas (500cc)</option>
+                        <option value="jelly">Jelly cereza (500cc)</option>
+                        <option value="mousse">Yogurt Mousse (500cc)</option>
+                        <option value="chocotorta">Chocotorta (250cc)</option>
+                        <option value="tiramisu">Tiramisú (250cc)</option>
+                        <option value="cheesecake">Cheesecake (250cc)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Cantidad de Unidades</label>
+                    <input type="number" id="units" value="10">
+                </div>
+                <button class="btn-calc" onclick="calculate()">Calcular Rentabilidad</button>
+
+                <div class="result-box" id="results">
+                    <div class="result-row">
+                        <span>Costo Unitario:</span>
+                        <span id="res-unit">$0</span>
+                    </div>
+                    <div class="result-row">
+                        <span>Costo Total:</span>
+                        <span id="res-total">$0</span>
+                    </div>
+                    <div class="result-row">
+                        <span>Precio Venta Sugerido:</span>
+                        <span id="res-price">$0</span>
+                    </div>
+                    <div class="result-row total">
+                        <span>Margen de Ganancia:</span>
+                        <span id="res-margin">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Danucci Exquisiteces - Argentina. Uso exclusivo alumnos.
+        </footer>
+    </div>
+
+    <script>
+        function calculate() {
+            const prod = document.getElementById('select-prod').value;
+            const units = parseFloat(document.getElementById('units').value);
+            
+            // Prices
+            const pCrema = parseFloat(document.getElementById('in-crema').value);
+            const pFruta = parseFloat(document.getElementById('in-fruta').value);
+            const pYogur = parseFloat(document.getElementById('in-yogur').value);
+            const pGranola = parseFloat(document.getElementById('in-granola').value);
+            const pQueso = parseFloat(document.getElementById('in-queso').value);
+            const pPack = parseFloat(document.getElementById('in-packaging').value);
+
+            let rowCost = 0;
+
+            switch(prod) {
+                case 'colchon':
+                    // Proporción estimada por 500cc
+                    rowCost = (pFruta * 0.25) + (pCrema/15) + (pGranola/10) + pPack;
+                    break;
+                case 'jelly':
+                    rowCost = (pFruta * 0.25) + (500/10) + (pCrema/30) + pPack; // Gelatina estimación
+                    break;
+                case 'mousse':
+                    rowCost = (pCrema/10) + (pYogur/10) + (pGranola/10) + pPack;
+                    break;
+                case 'chocotorta':
+                    rowCost = (pCrema/20) + 400 + pPack; // 400 estimación galletas y DDL
+                    break;
+                case 'tiramisu':
+                    rowCost = (pQueso/10) + (pCrema/20) + 500 + pPack;
+                    break;
+                case 'cheesecake':
+                    rowCost = (pQueso/10) + (pFruta/20) + 450 + pPack;
+                    break;
+            }
+
+            const totalCost = rowCost * units;
+            const unitCost = rowCost;
+            const suggestedPrice = unitCost * 2.2; // Multiplicador Danucci sugerido
+            const totalRevenue = suggestedPrice * units;
+            const totalMargin = totalRevenue - totalCost;
+
+            document.getElementById('res-unit').innerText = '$' + unitCost.toLocaleString('es-AR', {maximumFractionDigits: 0});
+            document.getElementById('res-total').innerText = '$' + totalCost.toLocaleString('es-AR', {maximumFractionDigits: 0});
+            document.getElementById('res-price').innerText = '$' + suggestedPrice.toLocaleString('es-AR', {maximumFractionDigits: 0});
+            document.getElementById('res-margin').innerText = '$' + totalMargin.toLocaleString('es-AR', {maximumFractionDigits: 0});
+        }
+
+        // Initial calc
+        calculate();
+    </script>
+</body>
+</html>

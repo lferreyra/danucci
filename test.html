@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test de Calificación | El Método Danucci</title>
     
+    <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"338c1720fe027347b257547f936ded49"})});</script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
@@ -175,8 +177,16 @@
         <!-- VISTA DE NO CALIFICADO -->
         <div id="fail-view" class="view">
             <h2 class="status-msg">No es tu momento</h2>
-            <p class="status-p">El Método Danucci exige un compromiso total con la calidad y los procesos. Basado en tus respuestas, hoy no cuentas con la disponibilidad necesaria.</p>
-            <a href="index.html" class="btn-aromix">Regresar al Inicio</a>
+            <p class="status-p">El Método Danucci exige un compromiso total. Basado en tus respuestas, hoy no cuentas con el perfil necesario para asegurar el éxito inmediato.</p>
+            
+            <div style="margin-top: 40px; padding: 30px; background: rgba(0,0,0,0.03); border-radius: 10px;">
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">¿Quieres recibir contenido gratuito de valor para prepararte?</p>
+                <input type="email" placeholder="Tu email" style="padding: 15px; border: 1px solid #ccc; width: 100%; max-width: 300px; margin-bottom: 15px; text-align: center;">
+                <br>
+                <button class="btn-aromix" style="margin-top: 0;" onclick="alert('Te has suscrito con éxito. ¡Pronto recibirás noticias!')">Suscribirme al Newsletter</button>
+            </div>
+            
+            <a href="index.html" class="btn-aromix" style="background: transparent; color: black; border: 1px solid black;">Regresar al Inicio</a>
         </div>
     </div>
 
@@ -247,6 +257,22 @@
                     { t: "La mejor receta del mundo", s: 5 },
                     { t: "Gestión de costos y sistema replicable", s: 20 },
                     { t: "La suerte en la ubicación", s: 0 }
+                ]
+            },
+            {
+                q: "¿Cuál es tu capital inicial disponible?",
+                options: [
+                    { t: "Menos de $100 USD (Solo Recetario)", s: 5 },
+                    { t: "Entre $100 y $500 USD (Distribución)", s: 15 },
+                    { t: "Más de $1000 USD (Escala/Local)", s: 20 }
+                ]
+            },
+            {
+                q: "Tu situación hoy es...",
+                options: [
+                    { t: "Quiero emprender mi primer negocio", s: 10 },
+                    { t: "Ya tengo un local gastronómico", s: 20 },
+                    { t: "Tengo un empleo y busco independencia", s: 15 }
                 ]
             }
         ];

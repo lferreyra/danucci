@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Guía Maestra de Insumos - Danucci</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-dark: #0A0A0A;
+            --brand-copper: #AD513B;
+            --brand-bg: #F4F1EA;
+            --text-dark: #2A2A2A;
+        }
+
+        @page { size: A4; margin: 0; }
+        
+        body { font-family: 'Outfit', sans-serif; color: var(--text-dark); margin: 0; padding: 0; background-color: #e5e5e5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        
+        /* A4 Page container */
+        .page { width: 210mm; min-height: 297mm; margin: 10mm auto; background: white; padding: 25mm 20mm; box-sizing: border-box; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.1); page-break-after: always; }
+        
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; border-radius: 0; }
+        }
+
+        h1, h2, h3, h4 { font-family: 'Fraunces', serif; color: var(--brand-dark); font-weight: 300; }
+        
+        /* Cover Page */
+        .cover { background-color: var(--brand-dark); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 15px solid var(--brand-bg); }
+        .cover-badge { background: var(--brand-copper); color: white; padding: 8px 25px; border-radius: 30px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; margin-bottom: 40px; }
+        .cover h1 { color: white; font-size: 4.5rem; margin-bottom: 20px; line-height: 1.1; max-width: 80%; }
+        .cover h1 i { color: var(--brand-copper); font-style: italic; }
+        .cover-subtitle { font-size: 1.4rem; font-weight: 300; max-width: 60%; line-height: 1.6; color: rgba(255,255,255,0.7); }
+        .cover-logo { position: absolute; bottom: 40px; font-family: serif; font-size: 2.5rem; letter-spacing: 2px; }
+        
+        /* Content Pages */
+        .header { border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 10px; margin-bottom: 40px; display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: gray; font-weight: 600; }
+        
+        .section-title { font-size: 2rem; border-left: 4px solid var(--brand-copper); padding-left: 20px; margin-top: 40px; margin-bottom: 20px; line-height: 1.2; }
+        p { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.7; }
+        ul { margin-bottom: 20px; padding-left: 20px; }
+        li { margin-bottom: 15px; font-size: 1.05rem; line-height: 1.6; }
+        strong { color: var(--brand-copper); font-weight: 600; }
+        
+        .highlight-box { background: var(--brand-bg); border-radius: 12px; padding: 30px; margin: 40px 0; border: 1px solid rgba(173, 81, 59, 0.2); }
+        .highlight-box h3 { margin-top: 0; color: var(--brand-copper); font-size: 1.5rem; margin-bottom: 15px; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+        
+        .tip-box { background: var(--brand-dark); color: white; padding: 30px; border-radius: 12px; margin: 40px 0; position: relative; overflow: hidden; }
+        .tip-box::before { content: '★'; position: absolute; right: -20px; bottom: -40px; font-size: 10rem; color: rgba(255,255,255,0.03); line-height: 1; }
+        .tip-box h3 { color: white; margin-top: 0; font-size: 1.5rem; margin-bottom: 15px; }
+        .tip-box p, .tip-box li { color: rgba(255,255,255,0.9); }
+        .tip-box strong { color: var(--brand-copper); }
+
+        .footer { position: absolute; bottom: 20mm; left: 20mm; right: 20mm; display: flex; justify-content: space-between; font-size: 0.8rem; color: gray; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 10px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- PORTADA -->
+    <div class="page cover">
+        <div class="cover-badge">Bonus Exclusivo</div>
+        <h1>Guía Maestra de <br><i>Insumos y Proveedores</i></h1>
+        <p class="cover-subtitle">El secreto definitivo para mantener una calidad boutique mientras escalas tu margen de ganancia.</p>
+        <div class="cover-logo">Danucci®</div>
+    </div>
+
+    <!-- PÁGINA 1 -->
+    <div class="page">
+        <div class="header">
+            <span>Sistema Danucci B2B</span>
+            <span>Módulo de Compras Inteligentes</span>
+        </div>
+
+        <h2 class="section-title">El Margen se Construye al Comprar</h2>
+        <p>La mayoría de los emprendedores gastronómicos cree erróneamente que para ganar más dinero tienen que subir agresivamente los precios de venta. Sin embargo, en el modelo de Micro-Distribución B2B de Danucci, <strong>el verdadero margen de ganancia se construye y se protege en el momento de la compra de insumos.</strong></p>
+        <p>El objetivo de este manual es enseñarte a comprar con mentalidad de fábrica, manteniendo esa calidad "boutique" innegociable que hará que las cafeterías rueguen por tus postres.</p>
+
+        <h2 class="section-title">1. Insumos Héroe vs. Insumos Estructurales</h2>
+        <p>Para escalar sin destruir tu rentabilidad, debes aplicar la <strong>Regla del 80/20 en tus compras</strong>. No todos los ingredientes necesitan ser la marca más costosa del mercado. Necesitas aprender a diferenciar:</p>
+
+        <div class="highlight-box">
+            <h3>Los Insumos "Héroe" (Dónde SÍ invertir)</h3>
+            <p>Estos ingredientes definen el perfil de sabor de tus postres. Si bajas la calidad aquí, el cliente lo notará inmediatamente en la primera cucharada.</p>
+            <ul>
+                <li><strong>Dulce de Leche:</strong> Debe ser repostero de altísima calidad, color oscuro y textura firme. Es el corazón de la Chocotorta. Busca fábricas lácteas regionales en lugar de potes de supermercado.</li>
+                <li><strong>Queso Crema (Cream Cheese):</strong> Fundamental para el Cheesecake y el Tiramisú. Debe tener un alto porcentaje de grasa (tenor graso) para garantizar cremosidad y firmeza en la heladera.</li>
+                <li><strong>Cacao Amargo:</strong> Un buen cacao alcalino (color rojizo oscuro, intenso) eleva el nivel de cualquier postre. Nunca uses cacao azucarado de desayuno.</li>
+                <li><strong>Crema de Leche:</strong> Utiliza doble crema (mínimo 39% a 44% de tenor graso) para asegurar un montado perfecto y firme que soporte la cadena de frío.</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <span>Guía de Insumos</span>
+            <span>Página 1</span>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2 -->
+    <div class="page">
+        <div class="header">
+            <span>Sistema Danucci B2B</span>
+            <span>Estrategias de Sustitución</span>
+        </div>
+
+        <h3 style="font-size: 1.5rem; color: var(--brand-dark); margin-bottom: 15px;">Los Insumos "Estructurales" (Dónde ahorrar)</h3>
+        <p>Estos ingredientes aportan volumen, textura y estructura, pero su marca específica no altera significativamente el perfil de sabor final.</p>
+        <ul>
+            <li><strong>Galletitas de Vainilla/Chocolate:</strong> Para las bases trituradas, no necesitas la primera marca comercial. Las distribuidoras venden galletitas molidas o "rotas" a granel específicamente para pastelería, a una fracción del costo.</li>
+            <li><strong>Azúcar (Blanca e Impalpable):</strong> Compra en bolsas de 10 kg o 25 kg directamente a papeleras o mayoristas de secos. El ahorro anual es gigantesco.</li>
+            <li><strong>Gelatina sin sabor:</strong> Se compra suelta por kilo. Jamás compres los costosos sobres pequeños de supermercado.</li>
+        </ul>
+
+        <h2 class="section-title">2. Sustitutos Inteligentes de Alta Gama</h2>
+        
+        <div class="tip-box">
+            <h3>El Secreto del "Falso Mascarpone"</h3>
+            <p>El queso Mascarpone original es costoso y su fecha de caducidad es muy corta, lo que aumenta tu riesgo de pérdida de stock. <strong>El truco Danucci:</strong> Crear un "blend" batiendo un queso crema tradicional de buena estructura con un porcentaje de crema de leche doble.</p>
+            <p>Obtendrás un perfil de sabor láctico profundo y una textura sedosa idéntica al mascarpone italiano, pero reduciendo el costo operativo casi un 50%.</p>
+        </div>
+
+        <h3 style="font-size: 1.5rem; color: var(--brand-dark);">Fruta de Estación vs. Pulpas Congeladas</h3>
+        <p>En temporada alta, compra fruta fresca a granel (ej. frutillas) y procésala inmediatamente para congelar. Fuera de temporada, tu mejor aliado será trabajar directamente con proveedores de <strong>pulpas congeladas al 100%</strong> (sin azúcar agregada).</p>
+        <p>Esto estandariza el sabor de tus postres durante todo el año y evita las mermas (desperdicio de fruta en mal estado o fea a la vista), garantizando que el "Colchón de Frutas" sepa igual en Enero que en Julio.</p>
+
+        <div class="footer">
+            <span>Guía de Insumos</span>
+            <span>Página 2</span>
+        </div>
+    </div>
+
+    <!-- PÁGINA 3 -->
+    <div class="page">
+        <div class="header">
+            <span>Sistema Danucci B2B</span>
+            <span>Logística y Empaque</span>
+        </div>
+
+        <h2 class="section-title">3. El Packaging: Donde la magia sucede</h2>
+        <p>En el modelo B2B, tú no le hablas directamente al cliente final. En las vitrinas y heladeras ajenas, <strong>tu packaging es tu único vendedor</strong>.</p>
+        <ul>
+            <li><strong>Envases Cristalinos:</strong> Usa envases PET o acrílicos de máxima transparencia. El cliente debe poder "comer con los ojos" viendo las capas perfectas de tus postres (ideal para Chocotorta y Cheesecake).</li>
+            <li><strong>Tapas Herméticas:</strong> Son innegociables. Evitan la contaminación cruzada de olores dentro de la heladera de la cafetería.</li>
+            <li><strong>Fajas y Etiquetas de Seguridad:</strong> Es mucho más inteligente comprar un envase genérico económico y colocarle una faja de papel impresa a todo color con tu logo. La faja sirve como <strong>sello de seguridad</strong> (evidencia de que no ha sido abierto) y aporta una percepción visual ultra-premium al producto.</li>
+        </ul>
+
+        <h2 class="section-title">4. Cómo Negociar con Distribuidores</h2>
+        
+        <div class="highlight-box">
+            <h3>Tácticas para Mayoristas</h3>
+            <ol style="margin-left: 15px; margin-top: 15px;">
+                <li style="margin-bottom: 10px;"><strong>Olvídate del Minorista:</strong> Salvo para una emergencia, tu negocio no puede sostener los márgenes del supermercado de la esquina.</li>
+                <li style="margin-bottom: 10px;"><strong>El Poder de la "Cuenta Corriente":</strong> Al principio pagarás de contado. Demuestra volumen y constancia, y a partir del tercer mes, exige cuenta corriente para pagar a 7 o 15 días. Esto apalancará tu flujo de caja.</li>
+                <li style="margin-bottom: 10px;"><strong>Concentración de Proveedores:</strong> Intenta tener 1 proveedor de lácteos, 1 de secos y 1 de envases. Al agrupar todo tu volumen de compras en pocos actores, tu poder para exigir descuentos será mucho mayor.</li>
+            </ol>
+        </div>
+
+        <h3 style="font-size: 1.5rem; color: var(--brand-dark);">Plantilla de Búsqueda Rápida</h3>
+        <p>Para aplicar el Sistema Danucci en tu ciudad, usa en Google o guías industriales estos términos exactos:</p>
+        <p style="background: var(--brand-bg); padding: 15px; border-radius: 8px;">
+            🔍 <em>"Distribuidor mayorista de lácteos para gastronomía [Tu Ciudad]"</em><br>
+            🔍 <em>"Papelera industrial / Cotillón mayorista"</em><br>
+            🔍 <em>"Fábrica de envases PET para alimentos"</em>
+        </p>
+
+        <div class="footer">
+            <span>Guía de Insumos</span>
+            <span>Página 3</span>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -31,36 +31,27 @@ El foco no es venderle al transeúnte en la calle, sino **operar un sistema de p
 
 ---
 
-## 4. Re-Estructuración de la Oferta (Embudo de Ventas)
+## 4. La Oferta Única: "El Sistema Danucci"
 
-### Nivel 1: El Recetario (Conocimiento Técnico)
-*Dirigido a: El que quiere aprender a fabricar con el Método de Frío.*
-- PDF Recetario Maestro (Las 8 fórmulas maestras: Chocotorta, Tiramisú, Cheesecake, etc).
-- Guía de Insumos y proveedores para asegurar calidad boutique.
-- **Precio Sugerido:** $14.900 ARS.
+En lugar de crear fricción con múltiples planes, hemos condensado todo el valor en un **ÚNICO PRODUCTO** altamente escalable y de venta directa. Esto elimina la necesidad de dar mentoría (lo que te devuelve tu tiempo 100%) y asegura una venta impulsiva pero de alto margen.
 
-### Nivel 2: El Negocio (Rentabilidad y Distribución)
-*Dirigido a: El que quiere ganar dinero real (Mayorista, Gastronómico o Futuro Dueño).*
-- **Todo el Nivel 1.**
-- **Ingeniería de Costos:** Calculadora interactiva para asegurar que cada postre te deje ganancia.
-- **Manual de Micro-Distribución:** Cómo entrar en cafeterías y conseguir tus primeros 20 puntos de venta.
-- **Manual Gastronómico:** Cómo integrar Danucci en tu propio bar o café para subir el ticket promedio.
-- **Precio Sugerido:** $59.000 ARS.
+### ¿Qué incluye El Sistema Danucci?
+*Dirigido a: Emprendedores que buscan montar un negocio de distribución en frío sin local a la calle.*
 
-### Nivel 3: Mentoría VIP (Escalamiento y Local) - **ALTA GAMA**
-*Dirigido a: Inversionistas que buscan el montaje completo de un Centro de Producción o Local Exclusivo.*
-- Todo el Nivel 2.
-- **Soporte Personalizado 1:1 vía WhatsApp.**
-- Mentoría directa conmigo para: Habilitaciones, maquinaria técnica y diseño de planta/local.
-- **DISPONIBILIDAD CRÍTICA:** Solo 2 vacantes por mes para asegurar resultados.
-- **Precio Sugerido:** $350.000 ARS.
+1. **Las 8 Fórmulas Maestras en Frío:** Recetarios técnicos (Chocotorta, Tiramisú, Cheesecake, etc) estandarizados para no usar hornos.
+2. **Sistema de Cálculo de Costos:** Una matriz para asegurar que cada postre vendido deje ganancia real.
+3. **Manual de Micro-Distribución B2B:** El esquema paso a paso para colocar productos en las heladeras de comercios aliados (cafeterías, kioscos, restaurantes).
+4. **Guía de Insumos y Proveedores:** Para asegurar una calidad boutique constante.
+
+**Estrategia de Precio (Efecto Anclaje):**
+- **Precio Real / Anclaje:** $70.000 ARS (Se muestra tachado).
+- **Precio Único de Venta:** $29.000 ARS.
 
 ---
 
-## 5. Perfiles que Buscamos
-- **El Mayorista**: Quiere producir y repartir sin tener local al público.
-- **El Gastronómico**: Ya tiene un comercio y quiere vender Danucci sin fabricar ni contratar pasteleros.
-- **El Emprendedor Retail**: Quiere abrir su propio punto de venta exclusivo Danucci.
+## 5. El Perfil de Cliente Ideal
+Le hablamos a un solo "avatar" para tener un mensaje láser: **El Emprendedor de Escala**.
+Aquel que comprende que el negocio no está en venderle a un cliente final en un local caro, sino en vender en volumen a otros comercios (B2B), utilizando la infraestructura (heladeras) de los demás.
 
 ---
 

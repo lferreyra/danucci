@@ -3,311 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Costos | Método DANUCCI</title>
-    
+    <title>Calculadora de Costos | Sistema Danucci</title>
+    <meta name="description" content="Calculá el costo real de cada postre con los rendimientos de producción del Sistema Danucci.">
+
     <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"338c1720fe027347b257547f936ded49"})});</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Outfit:wght@300..700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-linen: #F4F1EA;
-            --bg-dark: #0A0A0A;
-            --accent-copper: #AD513B;
-            --text-muted: #5C5C5C;
-            --radius-lux: 20px;
+            --crema: #FAF6EF;
+            --linen: #F1EADD;
+            --porcelana: #FFFDF9;
+            --terracota: #B4553C;
+            --terracota-900: #8E3F2B;
+            --caramelo: #C88B4A;
+            --caramelo-100: #F6E7D2;
+            --cacao: #2B211C;
+            --tinta: #241C18;
+            --tinta-60: #6B5E56;
+            --borde: #E4D9C8;
+            --verde: #5C7A4A;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-linen);
-            color: var(--bg-dark);
-            line-height: 1.6;
-            padding: 40px 20px;
+            background: var(--crema);
+            color: var(--tinta);
+            line-height: 1.55;
+            padding: 40px 16px 60px;
+            -webkit-font-smoothing: antialiased;
         }
+        .container { max-width: 1080px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 40px; }
+        .eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--terracota); }
+        h1 { font-family: 'Fraunces', serif; font-weight: 350; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin: 10px 0 12px; }
+        h1 i { color: var(--terracota); }
+        .subtitle { color: var(--tinta-60); max-width: 60ch; margin: 0 auto; }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        .tool-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 24px; align-items: start; }
+        .tool-grid > * { min-width: 0; }
+        @media (max-width: 860px) { .sticky { position: static; order: -1; } }
+        @media (max-width: 480px) { .card { padding: 20px 16px; } .insumo { grid-template-columns: 1fr 112px; } }
+        @media (max-width: 860px) { .tool-grid { grid-template-columns: 1fr; } }
 
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+        .card { background: var(--porcelana); border: 1px solid var(--borde); border-radius: 20px; padding: 28px; box-shadow: 0 12px 32px rgba(60,40,30,.06); }
+        .card h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.35rem; margin-bottom: 6px; }
+        .card .ayuda { font-size: .88rem; color: var(--tinta-60); margin-bottom: 18px; }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 10px;
+        .grupo { margin-top: 18px; }
+        .grupo-tit { font-size: .7rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--caramelo); margin-bottom: 8px; }
+        .insumo { display: grid; grid-template-columns: 1fr 130px; gap: 10px; align-items: center; padding: 7px 0; border-bottom: 1px dashed var(--borde); }
+        .insumo span { font-size: .92rem; }
+        .insumo small { display: block; color: var(--tinta-60); font-size: .76rem; }
+        .insumo.usado span { font-weight: 600; }
+        .campo-pesos { position: relative; }
+        .campo-pesos::before { content: '$'; position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--tinta-60); font-size: .9rem; }
+        input, select {
+            width: 100%; padding: 10px 12px; border: 1px solid var(--borde); border-radius: 8px;
+            font-family: inherit; font-size: 1rem; color: var(--tinta); background: #fff; outline: none;
+            transition: border-color .2s;
         }
+        .campo-pesos input { padding-left: 24px; text-align: right; font-variant-numeric: tabular-nums; }
+        input:focus, select:focus { border-color: var(--terracota); }
+        label { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-60); margin-bottom: 6px; }
+        .fila2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+        .reset { margin-top: 18px; background: none; border: none; color: var(--tinta-60); font: inherit; font-size: .85rem; text-decoration: underline; cursor: pointer; }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-weight: 300;
-            font-size: 1.1rem;
-        }
+        .sticky { position: sticky; top: 16px; }
+        .resultado { background: var(--cacao); color: var(--crema); border-radius: 16px; padding: 22px; margin-top: 20px; }
+        .res-fila { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; font-size: .95rem; color: rgba(250,246,239,.78); }
+        .res-fila b { color: #fff; font-weight: 600; font-variant-numeric: tabular-nums; }
+        .res-fila.grande { border-top: 1px solid rgba(250,246,239,.15); margin-top: 8px; padding-top: 14px; font-size: 1.15rem; }
+        .res-fila.grande b { color: var(--caramelo); font-size: 1.35rem; }
 
-        .tool-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .tool-grid { grid-template-columns: 1fr; }
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: var(--radius-lux);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .card h2 {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--bg-linen);
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
-            color: var(--text-muted);
-        }
-
-        input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #E1E1E1;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        input:focus {
-            border-color: var(--accent-copper);
-        }
-
-        .result-box {
-            background: var(--bg-dark);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 30px;
-        }
-
-        .result-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .result-row.total {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 15px;
-            margin-top: 15px;
-            font-size: 1.3rem;
-            font-weight: 800;
-            opacity: 1;
-            color: var(--accent-copper);
-        }
-
-        .btn-calc {
-            width: 100%;
-            padding: 15px;
-            background: var(--accent-copper);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            margin-top: 10px;
-        }
-
-        .btn-calc:hover {
-            background: #943d2a;
-            transform: translateY(-2px);
-        }
-
-        .selector {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #E1E1E1;
-            font-family: inherit;
-        }
-
-        footer {
-            margin-top: 80px;
-            text-align: center;
-            font-size: 0.8rem;
-            opacity: 0.5;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-        }
+        table { width: 100%; border-collapse: collapse; font-size: .86rem; margin-top: 18px; }
+        th { text-align: left; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-60); padding: 6px 4px; border-bottom: 1.5px solid var(--tinta); }
+        td { padding: 6px 4px; border-bottom: 1px solid var(--borde); }
+        .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+        tfoot td { font-weight: 700; border-top: 1.5px solid var(--tinta); border-bottom: none; }
+        .comprar { margin-top: 18px; background: var(--caramelo-100); border-radius: 12px; padding: 14px 16px; font-size: .88rem; }
+        .comprar b { color: var(--terracota-900); }
+        .comprar ul { list-style: none; margin-top: 6px; }
+        .comprar li { padding: 2px 0; }
+        .nota { margin-top: 24px; font-size: .82rem; color: var(--tinta-60); text-align: center; max-width: 70ch; margin-left: auto; margin-right: auto; }
+        footer { margin-top: 48px; text-align: center; font-size: .75rem; color: var(--tinta-60); letter-spacing: .14em; text-transform: uppercase; }
     </style>
 </head>
 <body>
+<div class="container">
+    <header>
+        <span class="eyebrow">Sistema Danucci</span>
+        <h1>Calculadora <i>de Costos</i></h1>
+        <p class="subtitle">Cargá lo que pagás hoy por cada insumo. La calculadora usa los rendimientos reales de nuestra producción: cuántos postres salen de cada balde, kilo o paquete.</p>
+    </header>
 
-    <div class="container">
-        <header>
-            <h1>Calculadora de Costos</h1>
-            <p class="subtitle">Método DANUCCI — Sistema Proyectado de Rentabilidad</p>
-        </header>
-
-        <div class="tool-grid">
-            <!-- INPUT PARAMS -->
-            <div class="card">
-                <h2>1. Precios de Insumos</h2>
-                <div class="input-group">
-                    <label>Crema Ledevit (5L)</label>
-                    <input type="number" id="in-crema" value="12000">
-                </div>
-                <div class="input-group">
-                    <label>Latas Fruta (Promedio)</label>
-                    <input type="number" id="in-fruta" value="1800">
-                </div>
-                <div class="input-group">
-                    <label>Yogur Bebible (1L)</label>
-                    <input type="number" id="in-yogur" value="1500">
-                </div>
-                <div class="input-group">
-                    <label>Granola (1kg)</label>
-                    <input type="number" id="in-granola" value="5500">
-                </div>
-                <div class="input-group">
-                    <label>Queso Crema (1kg)</label>
-                    <input type="number" id="in-queso" value="6000">
-                </div>
-                <div class="input-group">
-                    <label>Insumos Desechables (Vaso + Tapa + Cuchara)</label>
-                    <input type="number" id="in-packaging" value="250">
-                </div>
-            </div>
-
-            <!-- CALCULATOR -->
-            <div class="card">
-                <h2>2. Configurar Producción</h2>
-                <div class="input-group">
-                    <label>Seleccionar Producto</label>
-                    <select id="select-prod" class="selector">
-                        <option value="colchon">Colchón de Frutas (500cc)</option>
-                        <option value="jelly">Jelly cereza (500cc)</option>
-                        <option value="mousse">Yogurt Mousse (500cc)</option>
-                        <option value="chocotorta">Chocotorta (250cc)</option>
-                        <option value="tiramisu">Tiramisú (250cc)</option>
-                        <option value="cheesecake">Cheesecake (250cc)</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label>Cantidad de Unidades</label>
-                    <input type="number" id="units" value="10">
-                </div>
-                <button class="btn-calc" onclick="calculate()">Calcular Rentabilidad</button>
-
-                <div class="result-box" id="results">
-                    <div class="result-row">
-                        <span>Costo Unitario:</span>
-                        <span id="res-unit">$0</span>
-                    </div>
-                    <div class="result-row">
-                        <span>Costo Total:</span>
-                        <span id="res-total">$0</span>
-                    </div>
-                    <div class="result-row">
-                        <span>Precio Venta Sugerido:</span>
-                        <span id="res-price">$0</span>
-                    </div>
-                    <div class="result-row total">
-                        <span>Margen de Ganancia:</span>
-                        <span id="res-margin">$0</span>
-                    </div>
-                </div>
-            </div>
+    <div class="tool-grid">
+        <!-- PRECIOS -->
+        <div class="card">
+            <h2>1. Tus precios de compra</h2>
+            <p class="ayuda">Precio por unidad de compra, tal como lo pagás. Los valores iniciales son de referencia: reemplazalos por los tuyos. Se guardan en este dispositivo. En negrita, los insumos del producto elegido.</p>
+            <div id="insumos"></div>
+            <button class="reset" id="reset" type="button">Volver a los precios de referencia</button>
         </div>
 
-        <footer>
-            © 2026 Danucci Exquisiteces - Argentina. Uso exclusivo alumnos.
-        </footer>
+        <!-- CÁLCULO -->
+        <div class="card sticky">
+            <h2>2. Tu producción</h2>
+            <div style="margin-top:14px">
+                <label for="producto">Producto</label>
+                <select id="producto"></select>
+            </div>
+            <div class="fila2">
+                <div><label for="unidades">Unidades</label><input type="number" id="unidades" value="20" min="1" step="1"></div>
+                <div><label for="mult">Precio al comercio (× costo)</label><input type="number" id="mult" value="2.2" min="1" step="0.1"></div>
+            </div>
+            <div class="fila2">
+                <div><label for="multPub">Precio al público (× comercio)</label><input type="number" id="multPub" value="1.5" min="1" step="0.1"></div>
+                <div></div>
+            </div>
+
+            <div class="resultado">
+                <div class="res-fila"><span>Costo por unidad</span><b id="r-costo">$0</b></div>
+                <div class="res-fila"><span>Precio al comercio por unidad</span><b id="r-precio">$0</b></div>
+                <div class="res-fila"><span>Precio sugerido al público</span><b id="r-publico">$0</b></div>
+                <div class="res-fila"><span>Costo del lote</span><b id="r-costo-lote">$0</b></div>
+                <div class="res-fila"><span>Venta del lote al comercio</span><b id="r-venta-lote">$0</b></div>
+                <div class="res-fila grande"><span>Diferencia del lote</span><b id="r-margen">$0</b></div>
+            </div>
+
+            <table>
+                <thead><tr><th>Insumo</th><th class="num">Rinde</th><th class="num">Por unidad</th></tr></thead>
+                <tbody id="desglose"></tbody>
+                <tfoot><tr><td colspan="2">Costo por unidad</td><td class="num" id="r-costo-2">$0</td></tr></tfoot>
+            </table>
+
+            <div class="comprar" id="comprar"></div>
+        </div>
     </div>
 
-    <script>
-        function calculate() {
-            const prod = document.getElementById('select-prod').value;
-            const units = parseFloat(document.getElementById('units').value);
-            
-            // Prices
-            const pCrema = parseFloat(document.getElementById('in-crema').value);
-            const pFruta = parseFloat(document.getElementById('in-fruta').value);
-            const pYogur = parseFloat(document.getElementById('in-yogur').value);
-            const pGranola = parseFloat(document.getElementById('in-granola').value);
-            const pQueso = parseFloat(document.getElementById('in-queso').value);
-            const pPack = parseFloat(document.getElementById('in-packaging').value);
+    <p class="nota">La “diferencia del lote” no es ganancia neta: con ella pagás transporte, gastos fijos, mermas, muestras y tu tiempo. El detalle está en el Sistema de Cálculo de Costos.</p>
+    <footer>© 2026 Sistema Danucci · Uso exclusivo de alumnos</footer>
+</div>
 
-            let rowCost = 0;
+<script>
+(function () {
+    'use strict';
 
-            switch(prod) {
-                case 'colchon':
-                    // Proporción estimada por 500cc
-                    rowCost = (pFruta * 0.25) + (pCrema/15) + (pGranola/10) + pPack;
-                    break;
-                case 'jelly':
-                    rowCost = (pFruta * 0.25) + (500/10) + (pCrema/30) + pPack; // Gelatina estimación
-                    break;
-                case 'mousse':
-                    rowCost = (pCrema/10) + (pYogur/10) + (pGranola/10) + pPack;
-                    break;
-                case 'chocotorta':
-                    rowCost = (pCrema/20) + 400 + pPack; // 400 estimación galletas y DDL
-                    break;
-                case 'tiramisu':
-                    rowCost = (pQueso/10) + (pCrema/20) + 500 + pPack;
-                    break;
-                case 'cheesecake':
-                    rowCost = (pQueso/10) + (pFruta/20) + 450 + pPack;
-                    break;
-            }
+    // Insumos: precio de referencia por unidad de compra.
+    var INSUMOS = [
+        { id: 'ledevit',     grupo: 'Cremas y lácteos', nombre: 'Crema Ledevit Suave', unidad: 'balde de 5 L', precio: 23300 },
+        { id: 'ledevitNL',   grupo: 'Cremas y lácteos', nombre: 'Crema Ledevit No Láctea', unidad: 'botella chica · solo Vegano', precio: 4500 },
+        { id: 'yogur',       grupo: 'Cremas y lácteos', nombre: 'Yogur bebible entero', unidad: 'por envase', precio: 2000 },
+        { id: 'frutas',      grupo: 'Frutas y bases', nombre: 'Ensalada de frutas', unidad: 'lote de 4 latas de durazno + 1 de pera', precio: 14990 },
+        { id: 'pulpa',       grupo: 'Frutas y bases', nombre: 'Pulpa de frutilla', unidad: 'balde', precio: 30900 },
+        { id: 'gelatina',    grupo: 'Frutas y bases', nombre: 'Gelatina de cereza', unidad: '2 cajitas + 2 L de agua', precio: 1598 },
+        { id: 'granola',     grupo: 'Frutas y bases', nombre: 'Granola con pasas', unidad: '1 kg', precio: 3644 },
+        { id: 'granolaTrop', grupo: 'Frutas y bases', nombre: 'Granola tropical o vegana', unidad: '1 kg', precio: 4424 },
+        { id: 'chocolinas',  grupo: 'Línea premium', nombre: 'Galletitas Chocolinas', unidad: 'paquete', precio: 1699 },
+        { id: 'ddl',         grupo: 'Línea premium', nombre: 'Dulce de leche repostero', unidad: 'pote', precio: 5290 },
+        { id: 'tiraBase',    grupo: 'Línea premium', nombre: 'Tiramisú: huevos, azúcar, queso crema y crema de leche', unidad: 'receta completa (30 unidades)', precio: 9511 },
+        { id: 'vainillas',   grupo: 'Línea premium', nombre: 'Vainillas', unidad: '1 kg', precio: 4600 },
+        { id: 'cafe',        grupo: 'Línea premium', nombre: 'Café y coñac al café', unidad: 'para 30 unidades', precio: 1050 },
+        { id: 'carteDor',    grupo: 'Línea premium', nombre: 'Mousse Carte d’Or', unidad: 'envase', precio: 18330 },
+        { id: 'lincoln',     grupo: 'Línea premium', nombre: 'Galletitas Lincoln', unidad: 'paquete', precio: 1689 },
+        { id: 'manteca',     grupo: 'Línea premium', nombre: 'Manteca', unidad: 'pan', precio: 1117 },
+        { id: 'leche',       grupo: 'Línea premium', nombre: 'Leche', unidad: 'envase', precio: 2313 },
+        { id: 'env500',      grupo: 'Envases y etiquetas', nombre: 'Envases 500 cc con tapa', unidad: 'paquete de 100', precio: 12100 },
+        { id: 'env250',      grupo: 'Envases y etiquetas', nombre: 'Envases 250 cc con tapa', unidad: 'paquete de 100', precio: 8800 },
+        { id: 'envPet',      grupo: 'Envases y etiquetas', nombre: 'Envases PET 101 (premium)', unidad: 'paquete de 100', precio: 6700 },
+        { id: 'etiFrente',   grupo: 'Envases y etiquetas', nombre: 'Etiquetas frontales de vinilo', unidad: 'plancha o rollo', precio: 7000 },
+        { id: 'etiLogo',     grupo: 'Envases y etiquetas', nombre: 'Etiquetas de tapa (logo)', unidad: 'plancha o rollo', precio: 7000 },
+        { id: 'etiTN',       grupo: 'Envases y etiquetas', nombre: 'Etiquetas de tabla nutricional', unidad: 'plancha', precio: 950 },
+        { id: 'etiMiniTapa', grupo: 'Envases y etiquetas', nombre: 'Etiquetas de tapa para minis', unidad: 'plancha o rollo', precio: 7000 },
+        { id: 'etiMiniTN',   grupo: 'Envases y etiquetas', nombre: 'Tabla nutricional para minis', unidad: 'plancha o rollo', precio: 7000 },
+        { id: 'etiPremium',  grupo: 'Envases y etiquetas', nombre: 'Fajas de la línea premium', unidad: 'plancha o rollo', precio: 7000 },
+        { id: 'etiFecha',    grupo: 'Envases y etiquetas', nombre: 'Etiquetas de fecha', unidad: 'rollo', precio: 7000 }
+    ];
 
-            const totalCost = rowCost * units;
-            const unitCost = rowCost;
-            const suggestedPrice = unitCost * 2.2; // Multiplicador Danucci sugerido
-            const totalRevenue = suggestedPrice * units;
-            const totalMargin = totalRevenue - totalCost;
+    // Productos: [insumo, cuántas unidades de producto rinde una unidad de compra].
+    // Rendimientos reales de la planilla de producción Danucci.
+    var ETI_500 = [['etiFrente', 198], ['etiFecha', 1000], ['etiTN', 54], ['etiLogo', 312]];
+    var ETI_250 = [['etiMiniTapa', 231], ['etiFecha', 1000], ['etiMiniTN', 252]];
+    var ETI_PREM = [['etiPremium', 78], ['etiFecha', 1000]];
+    var PRODUCTOS = [
+        { id: 'cdf',      nombre: 'Colchón de Frutas · 500 cc', items: [['ledevit', 100], ['frutas', 63], ['granola', 33], ['env500', 100]].concat(ETI_500) },
+        { id: 'cdfMini',  nombre: 'Mini Colchón de Frutas · 250 cc', items: [['ledevit', 167], ['frutas', 126], ['granola', 50], ['env250', 100]].concat(ETI_250) },
+        { id: 'jelly',    nombre: 'Jelly · 500 cc', items: [['ledevit', 147], ['frutas', 63], ['gelatina', 15], ['env500', 100]].concat(ETI_500) },
+        { id: 'jellyMini',nombre: 'Mini Jelly · 250 cc', items: [['ledevit', 208], ['frutas', 126], ['gelatina', 30], ['env250', 100]].concat(ETI_250) },
+        { id: 'veg',      nombre: 'Colchón Vegano · 500 cc', items: [['ledevitNL', 14], ['frutas', 63], ['granolaTrop', 30], ['env500', 100]].concat(ETI_500) },
+        { id: 'vegMini',  nombre: 'Mini Vegano · 250 cc', items: [['ledevitNL', 28], ['frutas', 126], ['granolaTrop', 41], ['env250', 100]].concat(ETI_250) },
+        { id: 'yf',       nombre: 'Yogurt Mousse Frutilla · 500 cc', items: [['ledevit', 125], ['pulpa', 135], ['yogur', 22], ['granolaTrop', 30], ['env500', 100]].concat(ETI_500) },
+        { id: 'yfMini',   nombre: 'Mini Yogurt Mousse Frutilla · 250 cc', items: [['ledevit', 250], ['pulpa', 167], ['yogur', 44], ['granolaTrop', 41], ['env250', 100]].concat(ETI_250) },
+        { id: 'yv',       nombre: 'Yogurt Mousse Vainilla · 500 cc', items: [['ledevit', 161], ['frutas', 63], ['yogur', 29], ['granolaTrop', 30], ['env500', 100]].concat(ETI_500) },
+        { id: 'yvMini',   nombre: 'Mini Yogurt Mousse Vainilla · 250 cc', items: [['ledevit', 322], ['frutas', 126], ['yogur', 58], ['granolaTrop', 41], ['env250', 100]].concat(ETI_250) },
+        { id: 'choco',    nombre: 'Chocotorta · 250 cc', items: [['chocolinas', 5], ['ledevit', 125], ['ddl', 41], ['envPet', 100]].concat(ETI_PREM) },
+        { id: 'tira',     nombre: 'Tiramisú · 250 cc', items: [['tiraBase', 30], ['vainillas', 40], ['cafe', 30], ['envPet', 100]].concat(ETI_PREM) },
+        { id: 'cheese',   nombre: 'Cheesecake de Frutilla · 250 cc', items: [['carteDor', 80], ['lincoln', 10], ['leche', 80], ['manteca', 10], ['pulpa', 200], ['envPet', 100]].concat(ETI_PREM) }
+    ];
 
-            document.getElementById('res-unit').innerText = '$' + unitCost.toLocaleString('es-AR', {maximumFractionDigits: 0});
-            document.getElementById('res-total').innerText = '$' + totalCost.toLocaleString('es-AR', {maximumFractionDigits: 0});
-            document.getElementById('res-price').innerText = '$' + suggestedPrice.toLocaleString('es-AR', {maximumFractionDigits: 0});
-            document.getElementById('res-margin').innerText = '$' + totalMargin.toLocaleString('es-AR', {maximumFractionDigits: 0});
+    var CLAVE = 'danucci_calc_precios_v2';
+    var precios = {};
+    INSUMOS.forEach(function (i) { precios[i.id] = i.precio; });
+    try {
+        var guardados = JSON.parse(localStorage.getItem(CLAVE) || '{}');
+        Object.keys(guardados).forEach(function (k) { if (k in precios && guardados[k] > 0) precios[k] = guardados[k]; });
+    } catch (e) { /* sin storage: se usan los de referencia */ }
+
+    var $ = function (id) { return document.getElementById(id); };
+    var pesos = function (n) { return '$' + Math.round(n).toLocaleString('es-AR'); };
+    var nombreDe = {};
+    INSUMOS.forEach(function (i) { nombreDe[i.id] = i; });
+
+    // --- Formulario de precios ---
+    var cont = $('insumos');
+    var grupoActual = null, bloque = null;
+    INSUMOS.forEach(function (i) {
+        if (i.grupo !== grupoActual) {
+            grupoActual = i.grupo;
+            bloque = document.createElement('div');
+            bloque.className = 'grupo';
+            bloque.innerHTML = '<div class="grupo-tit"></div>';
+            bloque.firstChild.textContent = i.grupo;
+            cont.appendChild(bloque);
         }
+        var fila = document.createElement('div');
+        fila.className = 'insumo';
+        fila.dataset.id = i.id;
+        fila.innerHTML = '<span></span><div class="campo-pesos"><input type="number" min="0" step="1" inputmode="numeric"></div>';
+        var sp = fila.querySelector('span');
+        sp.textContent = i.nombre;
+        var sm = document.createElement('small');
+        sm.textContent = i.unidad;
+        sp.appendChild(sm);
+        var inp = fila.querySelector('input');
+        inp.id = 'p-' + i.id;
+        inp.value = precios[i.id];
+        inp.setAttribute('aria-label', 'Precio de ' + i.nombre + ', ' + i.unidad);
+        inp.addEventListener('input', function () {
+            var v = parseFloat(inp.value);
+            precios[i.id] = isFinite(v) && v >= 0 ? v : 0;
+            try { localStorage.setItem(CLAVE, JSON.stringify(precios)); } catch (e) {}
+            calcular();
+        });
+        bloque.appendChild(fila);
+    });
 
-        // Initial calc
-        calculate();
-    </script>
+    $('reset').addEventListener('click', function () {
+        INSUMOS.forEach(function (i) { precios[i.id] = i.precio; $('p-' + i.id).value = i.precio; });
+        try { localStorage.removeItem(CLAVE); } catch (e) {}
+        calcular();
+    });
+
+    // --- Selector de producto ---
+    var sel = $('producto');
+    PRODUCTOS.forEach(function (p) {
+        var o = document.createElement('option');
+        o.value = p.id; o.textContent = p.nombre;
+        sel.appendChild(o);
+    });
+    ['producto', 'unidades', 'mult', 'multPub'].forEach(function (id) {
+        $(id).addEventListener('input', calcular);
+        $(id).addEventListener('change', calcular);
+    });
+
+    function num(id, def) { var v = parseFloat($(id).value); return isFinite(v) && v > 0 ? v : def; }
+
+    function calcular() {
+        var prod = PRODUCTOS.filter(function (p) { return p.id === sel.value; })[0];
+        var unidades = Math.max(1, Math.round(num('unidades', 1)));
+        var mult = num('mult', 2.2), multPub = num('multPub', 1.5);
+
+        var costo = 0, filas = '', usados = {};
+        prod.items.forEach(function (it) {
+            var ins = nombreDe[it[0]], rinde = it[1];
+            var cpu = precios[ins.id] / rinde;
+            costo += cpu;
+            usados[ins.id] = (usados[ins.id] || 0) + unidades / rinde;
+            filas += '<tr><td></td><td class="num">' + rinde.toLocaleString('es-AR') + '</td><td class="num">' + pesos(cpu) + '</td></tr>';
+        });
+        var tb = $('desglose');
+        tb.innerHTML = filas;
+        prod.items.forEach(function (it, k) { tb.rows[k].cells[0].textContent = nombreDe[it[0]].nombre; });
+
+        var precio = costo * mult;
+        $('r-costo').textContent = pesos(costo);
+        $('r-costo-2').textContent = pesos(costo);
+        $('r-precio').textContent = pesos(precio);
+        $('r-publico').textContent = pesos(precio * multPub);
+        $('r-costo-lote').textContent = pesos(costo * unidades);
+        $('r-venta-lote').textContent = pesos(precio * unidades);
+        $('r-margen').textContent = pesos((precio - costo) * unidades);
+
+        // Qué comprar para el lote (solo ingredientes y envases, no etiquetas)
+        var lista = Object.keys(usados).filter(function (id) { return nombreDe[id].grupo !== 'Envases y etiquetas' || id.indexOf('env') === 0; });
+        var c = $('comprar');
+        c.innerHTML = '<b>Para ' + unidades + ' unidades necesitás:</b><ul></ul>';
+        var ul = c.querySelector('ul');
+        lista.forEach(function (id) {
+            var li = document.createElement('li');
+            var cant = usados[id];
+            li.textContent = '· ' + nombreDe[id].nombre + ': ' + cant.toLocaleString('es-AR', { maximumFractionDigits: 2 }) + ' × ' + nombreDe[id].unidad;
+            ul.appendChild(li);
+        });
+
+        document.querySelectorAll('.insumo').forEach(function (f) { f.classList.toggle('usado', f.dataset.id in usados); });
+    }
+
+    calcular();
+})();
+</script>
 </body>
 </html>
